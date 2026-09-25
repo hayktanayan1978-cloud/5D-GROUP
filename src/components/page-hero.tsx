@@ -1,0 +1,3 @@
+import type { ReactNode } from "react";
+
+export function PageHero({ eyebrow, title, text, aside }: { eyebrow: string; title: string; text: string; aside?: ReactNode }) { return <section className="relative overflow-hidden border-b bg-surface soft-grid"><div className="section-shell grid min-h-[430px] items-center gap-10 py-16 lg:grid-cols-[1.1fr_0.9fr]"><div><p className="eyebrow">{eyebrow}</p><h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">{title}</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">{text}</p></div>{aside && <div>{aside}</div>}</div></section>; }
