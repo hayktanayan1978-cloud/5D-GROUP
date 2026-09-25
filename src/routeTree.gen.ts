@@ -10,33 +10,153 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EaeuDistributionRouteImport } from './routes/eaeu-distribution'
+import { Route as PartnershipRouteImport } from './routes/partnership'
+import { Route as ProductCategoriesRouteImport } from './routes/product-categories'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as VityRouteImport } from './routes/vity'
+import { Route as CategoriesDVityRouteImport } from './routes/categories.d-vity'
+import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EaeuDistributionRoute = EaeuDistributionRouteImport.update({
+  id: '/eaeu-distribution',
+  path: '/eaeu-distribution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnershipRoute = PartnershipRouteImport.update({
+  id: '/partnership',
+  path: '/partnership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductCategoriesRoute = ProductCategoriesRouteImport.update({
+  id: '/product-categories',
+  path: '/product-categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VityRoute = VityRouteImport.update({
+  id: '/vity',
+  path: '/vity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriesDVityRoute = CategoriesDVityRouteImport.update({
+  id: '/categories/d-vity',
+  path: '/categories/d-vity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSlugRoute = ProductsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/eaeu-distribution': typeof EaeuDistributionRoute
+  '/partnership': typeof PartnershipRoute
+  '/product-categories': typeof ProductCategoriesRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/vity': typeof VityRoute
+  '/categories/d-vity': typeof CategoriesDVityRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/eaeu-distribution': typeof EaeuDistributionRoute
+  '/partnership': typeof PartnershipRoute
+  '/product-categories': typeof ProductCategoriesRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/vity': typeof VityRoute
+  '/categories/d-vity': typeof CategoriesDVityRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/eaeu-distribution': typeof EaeuDistributionRoute
+  '/partnership': typeof PartnershipRoute
+  '/product-categories': typeof ProductCategoriesRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/vity': typeof VityRoute
+  '/categories/d-vity': typeof CategoriesDVityRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/eaeu-distribution'
+    | '/partnership'
+    | '/product-categories'
+    | '/products'
+    | '/vity'
+    | '/categories/d-vity'
+    | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/eaeu-distribution'
+    | '/partnership'
+    | '/product-categories'
+    | '/products'
+    | '/vity'
+    | '/categories/d-vity'
+    | '/products/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/eaeu-distribution'
+    | '/partnership'
+    | '/product-categories'
+    | '/products'
+    | '/vity'
+    | '/categories/d-vity'
+    | '/products/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  EaeuDistributionRoute: typeof EaeuDistributionRoute
+  PartnershipRoute: typeof PartnershipRoute
+  ProductCategoriesRoute: typeof ProductCategoriesRoute
+  ProductsRoute: typeof ProductsRouteWithChildren
+  VityRoute: typeof VityRoute
+  CategoriesDVityRoute: typeof CategoriesDVityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +168,94 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eaeu-distribution': {
+      id: '/eaeu-distribution'
+      path: '/eaeu-distribution'
+      fullPath: '/eaeu-distribution'
+      preLoaderRoute: typeof EaeuDistributionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partnership': {
+      id: '/partnership'
+      path: '/partnership'
+      fullPath: '/partnership'
+      preLoaderRoute: typeof PartnershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-categories': {
+      id: '/product-categories'
+      path: '/product-categories'
+      fullPath: '/product-categories'
+      preLoaderRoute: typeof ProductCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vity': {
+      id: '/vity'
+      path: '/vity'
+      fullPath: '/vity'
+      preLoaderRoute: typeof VityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories/d-vity': {
+      id: '/categories/d-vity'
+      path: '/categories/d-vity'
+      fullPath: '/categories/d-vity'
+      preLoaderRoute: typeof CategoriesDVityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$slug': {
+      id: '/products/$slug'
+      path: '/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof ProductsSlugRouteImport
+      parentRoute: typeof ProductsRoute
+    }
   }
 }
 
+interface ProductsRouteChildren {
+  ProductsSlugRoute: typeof ProductsSlugRoute
+}
+
+const ProductsRouteChildren: ProductsRouteChildren = {
+  ProductsSlugRoute: ProductsSlugRoute,
+}
+
+const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
+  ProductsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  EaeuDistributionRoute: EaeuDistributionRoute,
+  PartnershipRoute: PartnershipRoute,
+  ProductCategoriesRoute: ProductCategoriesRoute,
+  ProductsRoute: ProductsRouteWithChildren,
+  VityRoute: VityRoute,
+  CategoriesDVityRoute: CategoriesDVityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
