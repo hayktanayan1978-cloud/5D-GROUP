@@ -35,26 +35,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Create 404 fallback for SPA
-        run: |
-          if [ -d "dist" ]; then
-            cp dist/index.html dist/404.html || true
-          elif [ -d ".output/public" ]; then
-            cp .output/public/index.html .output/public/404.html || true
-          fi
-
-      - name: Determine output folder
-        id: set_path
-        run: |
-          if [ -f "dist/index.html" ]; then
-            echo "dir=dist" >> $GITHUB_OUTPUT
-          elif [ -f ".output/public/index.html" ]; then
-            echo "dir=.output/public" >> $GITHUB_OUTPUT
-          elif [ -f "dist/client/index.html" ]; then
-            echo "dir=dist/client" >> $GITHUB_OUTPUT
-          else
-            echo "dir=dist" >> $GITHUB_OUTPUT
-          fi
+      - name: Create SPA fallback
+        run: cp dist/index.html dist/404.html || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -62,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ steps.set_path.outputs.dir }}
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
