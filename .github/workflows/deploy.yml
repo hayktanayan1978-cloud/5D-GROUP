@@ -35,17 +35,28 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Prepare SPA fallback & Debug output
+        run: |
+          ls -la
+          if [ -d "dist" ]; then
+            cp dist/index.html dist/404.html || true
+          elif [ -d ".output/public" ]; then
+            cp .output/public/index.html .output/public/404.html || true
+          fi
+
       - name: Determine output path
         id: output_path
         run: |
-          if [ -d ".output/public" ]; then
+          if [ -f ".output/public/index.html" ]; then
             echo "path=.output/public" >> $GITHUB_OUTPUT
-          elif [ -d "dist/client" ]; then
+          elif [ -f "dist/index.html" ]; then
+            echo "path=dist" >> $GITHUB_OUTPUT
+          elif [ -f "dist/client/index.html" ]; then
             echo "path=dist/client" >> $GITHUB_OUTPUT
           elif [ -d "dist" ]; then
             echo "path=dist" >> $GITHUB_OUTPUT
-          elif [ -d "build" ]; then
-            echo "path=build" >> $GITHUB_OUTPUT
+          elif [ -d ".output/public" ]; then
+            echo "path=.output/public" >> $GITHUB_OUTPUT
           else
             echo "path=." >> $GITHUB_OUTPUT
           fi
