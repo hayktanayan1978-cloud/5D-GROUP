@@ -35,8 +35,27 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Create SPA fallback
-        run: cp dist/index.html dist/404.html || true
+      - name: Find Output Directory & Prepare SPA fallback
+        id: find_out
+        run: |
+          echo "=== Root directory content ==="
+          ls -la
+          
+          if [ -d ".output/public" ]; then
+            echo "dir=.output/public" >> $GITHUB_OUTPUT
+            cp .output/public/index.html .output/public/404.html || true
+          elif [ -d "dist/client" ]; then
+            echo "dir=dist/client" >> $GITHUB_OUTPUT
+            cp dist/client/index.html dist/client/404.html || true
+          elif [ -d "dist" ]; then
+            echo "dir=dist" >> $GITHUB_OUTPUT
+            cp dist/index.html dist/404.html || true
+          elif [ -d "build" ]; then
+            echo "dir=build" >> $GITHUB_OUTPUT
+            cp build/index.html build/404.html || true
+          else
+            echo "dir=." >> $GITHUB_OUTPUT
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,7 +63,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: ${{ steps.find_out.outputs.dir }}
 
       - name: Deploy to GitHub Pages
         id: deployment
