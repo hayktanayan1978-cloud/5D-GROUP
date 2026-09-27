@@ -35,30 +35,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Prepare SPA fallback & Debug output
+      - name: Copy 404 for client routing
         run: |
-          ls -la
-          if [ -d "dist" ]; then
-            cp dist/index.html dist/404.html || true
-          elif [ -d ".output/public" ]; then
+          if [ -d ".output/public" ]; then
             cp .output/public/index.html .output/public/404.html || true
-          fi
-
-      - name: Determine output path
-        id: output_path
-        run: |
-          if [ -f ".output/public/index.html" ]; then
-            echo "path=.output/public" >> $GITHUB_OUTPUT
-          elif [ -f "dist/index.html" ]; then
-            echo "path=dist" >> $GITHUB_OUTPUT
-          elif [ -f "dist/client/index.html" ]; then
-            echo "path=dist/client" >> $GITHUB_OUTPUT
           elif [ -d "dist" ]; then
-            echo "path=dist" >> $GITHUB_OUTPUT
-          elif [ -d ".output/public" ]; then
-            echo "path=.output/public" >> $GITHUB_OUTPUT
-          else
-            echo "path=." >> $GITHUB_OUTPUT
+            cp dist/index.html dist/404.html || true
           fi
 
       - name: Setup Pages
@@ -67,7 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ steps.output_path.outputs.path }}
+          path: '.output/public'
 
       - name: Deploy to GitHub Pages
         id: deployment
