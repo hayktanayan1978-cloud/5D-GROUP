@@ -1,25 +1,33 @@
-import { FlaskConical } from "lucide-react";
-import { cn } from "@/lib/utils";
+interface ProductVisualProps {
+  name: string;
+  accent: "blue" | "teal" | "amber" | "coral";
+  image?: string;
+  className?: string;
+}
 
-const accents = {
-  blue: "bg-brand-soft text-primary border-primary/15",
-  teal: "bg-teal/10 text-teal border-teal/20",
-  amber: "bg-chart-4/20 text-foreground border-chart-4/30",
-  coral: "bg-chart-1/10 text-chart-1 border-chart-1/20",
-};
-
-export function ProductVisual({ name, accent, large = false }: { name: string; accent: keyof typeof accents; large?: boolean }) {
-  return (
-    <div className={cn("relative flex items-center justify-center overflow-hidden bg-surface soft-grid", large ? "min-h-[430px]" : "h-64")}>
-      <div className={cn("absolute h-44 w-44 rounded-full blur-3xl opacity-70", accents[accent])} />
-      <div className={cn("relative flex flex-col items-center border bg-background shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)]", large ? "h-72 w-44 rounded-[2rem] p-5" : "h-44 w-28 rounded-2xl p-3", accents[accent])}>
-        <div className="mb-auto flex w-full items-center justify-between border-b border-current/15 pb-2">
-          <span className="font-display text-xs font-bold">VITY</span>
-          <FlaskConical className="size-3.5" />
-        </div>
-        <span className={cn("text-center font-display font-bold leading-tight", large ? "text-xl" : "text-sm")}>{name}</span>
-        <span className="mt-auto text-[9px] font-semibold uppercase tracking-[0.12em]">Catalog visual pending</span>
+export function ProductVisual({ name, accent, image, className = "" }: ProductVisualProps) {
+  if (image) {
+    return (
+      <div className={`relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-secondary/30 p-4 ${className}`}>
+        <img
+          src={image}
+          alt={name}
+          className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
+    );
+  }
+
+  const accentStyles = {
+    blue: "from-blue-500/10 to-indigo-500/10 text-blue-600",
+    teal: "from-teal-500/10 to-emerald-500/10 text-teal-600",
+    amber: "from-amber-500/10 to-orange-500/10 text-amber-600",
+    coral: "from-rose-500/10 to-pink-500/10 text-rose-600",
+  };
+
+  return (
+    <div className={`relative flex aspect-[4/3] w-full items-center justify-center bg-gradient-to-br ${accentStyles[accent]} p-6 text-center ${className}`}>
+      <span className="font-semibold tracking-wide">{name}</span>
     </div>
   );
 }
