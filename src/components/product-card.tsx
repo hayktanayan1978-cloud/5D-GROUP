@@ -6,7 +6,7 @@ import { ProductVisual } from "@/components/product-visual";
 export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group overflow-hidden rounded-lg border border-border bg-card transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_-35px_color-mix(in_oklab,var(--primary)_42%,transparent)]">
-      <ProductVisual name={product.name} accent={product.accent} />
+      <ProductVisual name={product.name} accent={product.accent} image={product.image} />
       <div className="p-5">
         <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-primary">{product.type}</p>
         <h3 className="min-h-14 text-xl font-semibold leading-snug text-foreground">{product.name}</h3>
