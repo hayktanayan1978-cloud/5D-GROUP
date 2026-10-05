@@ -44,7 +44,7 @@ function Index() {
           <div className="relative flex items-center justify-center lg:pl-8">
             <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-background/50 p-2 shadow-2xl backdrop-blur">
               <img
-                src="/vity-hero.jpg"
+                src="/vity-lineup.png"
                 alt="VITY Vitamins & Supplements Lineup"
                 className="h-auto w-full max-w-md rounded-xl object-contain lg:max-w-lg"
               />
