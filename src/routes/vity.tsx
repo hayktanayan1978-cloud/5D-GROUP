@@ -8,16 +8,35 @@ import { useLang } from "@/lib/lang";
 export const Route = createFileRoute("/vity")({
   head: () => ({
     meta: [
-      { title: "VITY Vitamins & Supplements — Exclusive EAEU Brand" },
-      { name: "description", content: "Discover VITY, the British vitamins and supplements brand represented exclusively by 5D Group across the EAEU." },
-      { property: "og:title", content: "VITY — Exclusive Brand Across the EAEU" },
-      { property: "og:description", content: "British vitamins and supplements for professional EAEU distribution." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" }
+      { title: "5D Group — VITY Vitamins & Supplements" },
+      { name: "description", content: "Exclusive brand representation." }
     ]
   }),
   component: Vity
 });
+
+const cardsData = [
+  {
+    icon: Landmark,
+    en: ["British Standards", "Positioned as a British vitamins and supplements brand."],
+    ru: ["Британское происхождение", "VITY позиционируется как британский бренд витаминов и добавок."]
+  },
+  {
+    icon: BadgeCheck,
+    en: ["Quality Framework", "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."],
+    ru: ["Стандарты качества", "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC."]
+  },
+  {
+    icon: BookOpen,
+    en: ["Professional B2B Focus", "An official B2B catalog supports professional commercial partnerships."],
+    ru: ["Профессиональный B2B-подход", "Официальный B2B-каталог VITY предназначен для делового сотрудничества."]
+  },
+  {
+    icon: Boxes,
+    en: ["Broad Portfolio", "Vitamins, multivitamins, probiotics, specialty supplements and minerals."],
+    ru: ["Широкий ассортимент", "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы."]
+  }
+];
 
 const copy = {
   en: {
@@ -26,12 +45,6 @@ const copy = {
     heroText: "British vitamins and supplements, exclusively represented and distributed by 5D Group throughout the EAEU.",
     whyEyebrow: "Why VITY",
     whyTitle: "A professional portfolio with a British identity",
-    cards: [
-      ["British Standards", "Positioned as a British vitamins and supplements brand."],
-      ["Quality Framework", "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."],
-      ["Professional B2B Focus", "An official B2B catalog supports professional commercial partnerships."],
-      ["Broad Portfolio", "Vitamins, multivitamins, probiotics, specialty supplements and minerals."],
-    ],
     standardsEyebrow: "Quality & Standards",
     standardsTitle: "Catalog-stated compliance framework",
     standardsText: "The official VITY B2B catalog references the following standards and institutions. This presentation does not claim certifications beyond the catalog wording.",
@@ -44,12 +57,6 @@ const copy = {
     heroText: "Британский бренд витаминов и пищевых добавок, эксклюзивным представителем и дистрибьютором которого на территории ЕАЭС является 5D Group.",
     whyEyebrow: "Почему VITY",
     whyTitle: "Профессиональный портфель с британской идентичностью",
-    cards: [
-      ["Британское происхождение", "VITY позиционируется как британский бренд витаминов и пищевых добавок."],
-      ["Стандарты качества", "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC."],
-      ["Профессиональный B2B-подход", "Официальный B2B-каталог VITY предназначен для делового сотрудничества."],
-      ["Широкий ассортимент", "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы."],
-    ],
     standardsEyebrow: "Качество и стандарты",
     standardsTitle: "Система соответствия согласно каталогу",
     standardsText: "В официальном B2B-каталоге VITY упоминаются следующие стандарты и организации. Это не утверждение о наличии дополнительных сертификатов.",
@@ -68,11 +75,11 @@ function Vity() {
         title={t.heroTitle} 
         text={t.heroText} 
         aside={
-          <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-teal/10 via-background to-blue-500/10 p-2 shadow-sm">
+          <div className="relative overflow-hidden rounded-2xl border bg-background p-2 shadow-lg">
             <img 
               src="/vity-hero-d3-selen.jpg" 
               alt="VITY Hero Visual" 
-              className="h-auto w-full rounded-xl object-cover"
+              className="h-auto w-full max-w-md rounded-xl object-contain lg:max-w-lg"
             />
           </div>
         }
@@ -81,14 +88,14 @@ function Vity() {
         <div className="section-shell">
           <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {t.cards.map(([title, text], i) => { 
-              const icons = [Landmark, BadgeCheck, BookOpen, Boxes];
-              const Icon = icons[i]!;
+            {cardsData.map((card) => { 
+              const Icon = card.icon;
+              const [cardTitle, cardText] = card[lang];
               return (
-                <article className="rounded-lg border p-6" key={title}>
+                <article className="rounded-lg border bg-card p-6" key={cardTitle}>
                   <Icon className="size-6 text-teal" />
-                  <h3 className="mt-5 font-semibold">{title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
+                  <h3 className="mt-5 font-semibold text-foreground">{cardTitle}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{cardText}</p>
                 </article>
               ); 
             })}
