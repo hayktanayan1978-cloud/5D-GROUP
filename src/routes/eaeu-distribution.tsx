@@ -22,7 +22,7 @@ function EAEUDistributionComponent() {
       {
         icon: FileText,
         title: isRu ? "Регистрация (СГР)" : "Regulatory Support",
-        desc: isRu ? "Подготовка досье և получение Свидетельств о государственной регистрации." : "Full dossier preparation and State Registration Certificate issuance."
+        desc: isRu ? "Подготовка досье и получение Свидетельств о государственной регистрации." : "Full dossier preparation and State Registration Certificate issuance."
       },
       {
         icon: Truck,
