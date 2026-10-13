@@ -1,17 +1,20 @@
-import { create } from 'zustand';
+import { useState, useEffect } from "react";
 
-type Lang = 'en' | 'ru';
+export function useLang(): "en" | "ru" {
+  const [lang, setLang] = useState<"en" | "ru">("en");
 
-interface LangState {
-  lang: Lang;
-  setLang: (lang: Lang) => void;
-}
+  useEffect(() => {
+    const handleStorage = () => {
+      const saved = localStorage.getItem("app_lang") as "en" | "ru";
+      if (saved === "ru" || saved === "en") {
+        setLang(saved);
+      }
+    };
 
-export const useLangStore = create<LangState>((set) => ({
-  lang: 'en',
-  setLang: (lang) => set({ lang }),
-}));
+    handleStorage();
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
 
-export function useLang(): Lang {
-  return useLangStore((state) => state.lang);
+  return lang;
 }
