@@ -84,10 +84,16 @@ export function getProduct(slug: string): Product | undefined {
 }
 
 export function localizeProduct(product: Product, lang: "en" | "ru") {
+  if (!product) return null;
+  const l = lang === "ru" ? "ru" : "en";
   return {
     ...product,
-    shortDesc: product.shortDesc[lang] || product.shortDesc.en,
-    fullDesc: product.fullDesc[lang] || product.fullDesc.en,
-    features: product.features[lang] || product.features.en
+    shortDesc: product.shortDesc?.[l] || product.shortDesc?.en || "",
+    fullDesc: product.fullDesc?.[l] || product.fullDesc?.en || "",
+    features: Array.isArray(product.features?.[l]) 
+      ? product.features[l] 
+      : Array.isArray(product.features?.en) 
+        ? product.features.en 
+        : []
   };
 }
