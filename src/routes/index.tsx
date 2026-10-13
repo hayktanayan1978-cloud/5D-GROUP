@@ -14,13 +14,16 @@ function HomeComponent() {
   const t = {
     badge: isRu ? "Эксклюзивный партнер VITY в ЕАЭС" : "Exclusive VITY partner across the EAEU",
     smallLabel: isRu ? "5D GROUP · ФАРМАЦЕВТИЧЕСКАЯ И НУТРИЦЕВТИЧЕСКАЯ ДИСТРИБУЦИЯ" : "5D GROUP · PHARMACEUTICAL & NUTRACEUTICAL DISTRIBUTION",
-    title: isRu ? "Связываем\nнадежные\nбренды пищевых\nдобавок с\nрынком ЕАЭС." : "Connecting\ntrusted\nsupplement brands\nwith the\nEAEU market.",
+    title: isRu 
+      ? "Связываем надежные бренды пищевых добавок с рынком ЕАЭС." 
+      : "Connecting trusted supplement brands with the EAEU market.",
     desc: isRu 
       ? "Эксклюзивное представительство и дистрибуция витаминов и комплексов VITY из Великобритании на территории ЕАЭС." 
       : "Exclusive EAEU representation and distribution of VITY Vitamins & Supplements from the United Kingdom.",
     btnCatalog: isRu ? "Каталог продукции VITY ↗" : "Explore Products ↗",
     btnPartner: isRu ? "Стать партнером" : "B2B Partnership",
-    standLabel: isRu ? "ВЕЛИКОБРИТАНИЯ — ЕАЭС\nПрофессиональная B2B дистрибуция" : "UK — EAEU\nProfessional B2B distribution",
+    standLabelLine1: isRu ? "ВЕЛИКОБРИТАНИЯ — ЕАЭС" : "UK — EAEU",
+    standLabelLine2: isRu ? "Профессиональная B2B дистрибуция" : "Professional B2B distribution",
     secBadge: isRu ? "О КОМПАНИИ 5D GROUP" : "ABOUT 5D GROUP",
     secTitle: isRu ? "Надежный партнер для регулируемых и профессиональных рынков" : "Trusted Partner for Regulated & Professional Markets",
     secDesc: isRu
@@ -52,7 +55,7 @@ function HomeComponent() {
 
   return (
     <div className="relative min-h-screen bg-background">
-      {/* Full Background Laboratory Visual Overlay */}
+      {/* Hero Section with Grid Pattern and Background Overlay */}
       <section className="relative overflow-hidden border-b border-slate-200/60 py-16 md:py-24 lg:py-28">
         {/* Background Image Layer */}
         <div 
@@ -60,7 +63,7 @@ function HomeComponent() {
           style={{ backgroundImage: `url('/vity-hero-d3-selen.jpg')` }}
         />
         
-        {/* Light Blue Subtle Grid Overlay like Lovable */}
+        {/* Subtle Grid Pattern Overlay */}
         <div 
           className="absolute inset-0 z-0 opacity-40"
           style={{
@@ -81,7 +84,7 @@ function HomeComponent() {
                 {t.smallLabel}
               </div>
 
-              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12] whitespace-pre-line">
+              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12]">
                 {t.title}
               </h1>
 
@@ -108,8 +111,8 @@ function HomeComponent() {
                   className="w-full object-contain rounded-xl"
                 />
                 <div className="mt-3 border-t border-slate-100 pt-3 text-right">
-                  <p className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider whitespace-pre-line">
-                    {t.standLabel}
+                  <p className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                    {t.standLabelLine1}<br />{t.standLabelLine2}
                   </p>
                 </div>
               </div>
@@ -142,11 +145,4 @@ function HomeComponent() {
             {t.cards.map((card, idx) => {
               const Icon = card.icon;
               return (
-                <div key={idx} className="rounded-xl border border-slate-200/80 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white">
-                  <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
-                    <Icon className="size-5" />
-                  </div>
-                  <h3 className="mt-4 font-display text-base font-bold text-slate-900">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-xs
+                <div key
