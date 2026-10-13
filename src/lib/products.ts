@@ -59,9 +59,4 @@ const russianCatalogText: Record<string, string> = {
   "Magnesium": "Магний", "Copper": "Медь", "Chromium": "Хром",
   "Biotin": "Биотин", "Calcium": "Кальций", "Iodine": "Йод",
   "Folic Acid (Vitamin B9)": "Фолиевая кислота (витамин B9)", "Pantothenic Acid": "Пантотеновая кислота",
-  "Tablet": "Таблетки", "Tablets": "Таблетки",
-  "Chewable · Natural raspberry flavor": "Жевательные таблетки · натуральный вкус малины",
-  "Orange flavor": "Апельсиновый вкус",
-  "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties": "Жевательные таблетки для детей от 3 лет · фруктовый вкус, 4 разновидности витаминов",
-  "For children from 3 years": "Для детей от 3 лет",
-  "Specialized formula intended to support high energy levels, muscle function, stress resilience and heart health.": "Согласно каталогу, специализированная
+  "Tablet": "Таблетки", "
