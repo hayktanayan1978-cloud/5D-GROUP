@@ -52,16 +52,28 @@ function HomeComponent() {
 
   return (
     <div className="relative min-h-screen bg-background">
-      {/* Huge Natural Lab Hero Section */}
-      <section 
-        className="relative border-b border-slate-200/50 bg-cover bg-center bg-no-repeat py-16 md:py-24 lg:py-32"
-        style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.4) 100%), url('/laboratory-bg.jpg')` }}
-      >
+      {/* Full Background Laboratory Visual Overlay */}
+      <section className="relative overflow-hidden border-b border-slate-200/60 py-16 md:py-24 lg:py-28">
+        {/* Background Image Layer */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25 mix-blend-multiply"
+          style={{ backgroundImage: `url('/vity-hero-d3-selen.jpg')` }}
+        />
+        
+        {/* Light Blue Subtle Grid Overlay like Lovable */}
+        <div 
+          className="absolute inset-0 z-0 opacity-40"
+          style={{
+            backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
+            backgroundSize: `40px 40px`
+          }}
+        />
+
         <div className="section-shell relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/10 px-3 py-0.5 text-[11px] font-semibold text-teal-800">
-                <span className="size-1.5 rounded-full bg-teal" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-white/90 backdrop-blur-sm px-3.5 py-1 text-[11px] font-semibold text-teal-800 shadow-sm">
+                <span className="size-2 rounded-full bg-teal" />
                 {t.badge}
               </div>
 
@@ -69,7 +81,7 @@ function HomeComponent() {
                 {t.smallLabel}
               </div>
 
-              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.1] whitespace-pre-line">
+              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12] whitespace-pre-line">
                 {t.title}
               </h1>
 
@@ -78,25 +90,25 @@ function HomeComponent() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-[#005587] hover:bg-[#004066] text-white">
+                <Button asChild size="lg" className="bg-[#005587] hover:bg-[#004066] text-white shadow-sm">
                   <Link to="/products">{t.btnCatalog}</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-slate-300">
+                <Button asChild variant="outline" size="lg" className="border-slate-300 bg-white/80 backdrop-blur-sm">
                   <Link to="/partnership">{t.btnPartner}</Link>
                 </Button>
               </div>
             </div>
 
-            {/* Natural Product Stand on the Right */}
+            {/* Product Display Stand */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-sm overflow-hidden bg-transparent">
+              <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-xl backdrop-blur-md">
                 <img 
                   src="/vity-lineup.png" 
-                  alt="VITY Products" 
-                  className="w-full object-contain"
+                  alt="VITY Products Display" 
+                  className="w-full object-contain rounded-xl"
                 />
-                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm border border-slate-200/85 p-3 rounded-xl shadow-md text-right">
-                  <p className="text-[10px] font-mono font-extrabold text-slate-800 uppercase tracking-wider whitespace-pre-line">
+                <div className="mt-3 border-t border-slate-100 pt-3 text-right">
+                  <p className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider whitespace-pre-line">
                     {t.standLabel}
                   </p>
                 </div>
@@ -125,27 +137,16 @@ function HomeComponent() {
             </div>
           </div>
 
-          {/* 4 Custom Subtle Cards */}
+          {/* 4 Cards */}
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.cards.map((card, idx) => {
               const Icon = card.icon;
               return (
-                <div key={idx} className="rounded-xl border border-slate-100 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white">
+                <div key={idx} className="rounded-xl border border-slate-200/80 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white">
                   <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
                     <Icon className="size-5" />
                   </div>
                   <h3 className="mt-4 font-display text-base font-bold text-slate-900">
                     {card.title}
                   </h3>
-                  <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-                    {card.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+                  <p className="mt-2 text-xs
