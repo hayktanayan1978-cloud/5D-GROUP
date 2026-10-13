@@ -14,7 +14,7 @@ function HomeComponent() {
   const t = {
     badge: isRu ? "Эксклюзивный партнер VITY в ЕАЭС" : "Exclusive VITY partner across the EAEU",
     smallLabel: isRu ? "5D GROUP · ФАРМАЦЕВТИЧЕСКАЯ И НУТРИЦЕВТИЧЕСКАЯ ДИСТРИБУЦИЯ" : "5D GROUP · PHARMACEUTICAL & NUTRACEUTICAL DISTRIBUTION",
-    title: isRu ? "Связываем надежные бренды пищевых добавок с рынком ЕАЭС." : "Connecting trusted supplement brands with the EAEU market.",
+    title: isRu ? "Связываем\nнадежные\nбренды пищевых\nдобавок с\nрынком ЕАЭС." : "Connecting\ntrusted\nsupplement brands\nwith the\nEAEU market.",
     desc: isRu ? "Эксклюзивное представительство и дистрибуция витаминов и комплексов VITY из Великобритании на территории ЕАЭС." : "Exclusive EAEU representation and distribution of VITY Vitamins & Supplements from the United Kingdom.",
     btnCatalog: isRu ? "Каталог продукции VITY ↗" : "Explore Products ↗",
     btnPartner: isRu ? "Стать партнером" : "B2B Partnership",
@@ -49,15 +49,28 @@ function HomeComponent() {
 
   return (
     <div className="relative min-h-screen bg-background">
-      <section className="relative overflow-hidden border-b border-slate-200/50 py-16 md:py-24 lg:py-28">
-        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-85" style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0.3) 100%), url('/laboratory-bg.jpg')` }} />
-        <div className="absolute inset-0 z-0 opacity-30" style={{ backgroundImage: `linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px)`, backgroundSize: `48px 48px` }} />
+      {/* 1:1 Exact Lovable Laboratory Hero Section */}
+      <section className="relative overflow-hidden border-b border-slate-200/50 py-20 md:py-24 lg:py-32">
+        {/* Background Image Layer (Original Photo) */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-95"
+          style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.95) 25%, rgba(255,255,255,0.88) 55%, rgba(255,255,255,0.25) 100%), url('/laboratory-bg.jpg')` }}
+        />
+        
+        {/* Extremely Subtle Blue Grid Overlay (7% opacity for near-invisible pattern) */}
+        <div 
+          className="absolute inset-0 z-0 opacity-[0.07]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px)`,
+            backgroundSize: `48px 48px`
+          }}
+        />
 
-        <div className="section-shell relative z-10">
+        <div className="section-shell relative z-10 animate-fade-in">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/10 px-3.5 py-1 text-[11px] font-semibold text-teal-800 shadow-sm">
-                <span className="size-2 rounded-full bg-teal" />
+                <span className="size-2 rounded-full bg-teal animate-pulse" />
                 {t.badge}
               </div>
 
@@ -65,7 +78,7 @@ function HomeComponent() {
                 {t.smallLabel}
               </div>
 
-              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12]">
+              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12] whitespace-pre-line">
                 {t.title}
               </h1>
 
@@ -77,17 +90,22 @@ function HomeComponent() {
                 <Button asChild size="lg" className="bg-[#005587] hover:bg-[#004066] text-white shadow-sm">
                   <Link to="/products">{t.btnCatalog}</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-slate-300 bg-white/90 backdrop-blur-sm">
+                <Button asChild variant="outline" size="lg" className="border-slate-300 bg-white/95 backdrop-blur-sm">
                   <Link to="/partnership">{t.btnPartner}</Link>
                 </Button>
               </div>
             </div>
 
+            {/* Completely Seamless Transparent Product Display Stand (No bg, border, or shadow) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 p-4 shadow-xl backdrop-blur-md">
-                <img src="/vity-lineup.png" alt="VITY Products Display" className="w-full object-contain rounded-xl" />
-                <div className="mt-3 border-t border-slate-100 pt-3 text-right">
-                  <p className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+              <div className="relative w-full max-w-md bg-transparent overflow-visible">
+                <img 
+                  src="/vity-lineup.png" 
+                  alt="VITY Products Display" 
+                  className="w-full object-contain filter drop-shadow-xl"
+                />
+                <div className="mt-3 text-right bg-white/40 backdrop-blur-xs inline-block ml-auto px-2 py-1 rounded">
+                  <p className="text-[10px] font-mono font-bold text-slate-600 uppercase tracking-wider">
                     {t.standLabel1}<br />{t.standLabel2}
                   </p>
                 </div>
@@ -97,6 +115,7 @@ function HomeComponent() {
         </div>
       </section>
 
+      {/* Info & Company Profile Section */}
       <section className="bg-white py-16">
         <div className="section-shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
@@ -119,7 +138,7 @@ function HomeComponent() {
             {t.cards.map((card, idx) => {
               const Icon = card.icon;
               return (
-                <div key={idx} className="rounded-xl border border-slate-200/80 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white">
+                <div key={idx} className="rounded-xl border border-slate-200/80 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white hover:-translate-y-1 duration-200">
                   <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
                     <Icon className="size-5" />
                   </div>
