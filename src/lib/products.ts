@@ -28,7 +28,7 @@ export const products: Product[] = [
     format: "Chewable · Natural raspberry flavor",
     code: "D-5000-CHW",
     accent: "blue",
-    image: "/vity-hero-d3-selen.jpg"
+    image: "/vity-d3-5000-chewable.png"
   },
   {
     slug: "d-vity-5000-tablets",
@@ -40,7 +40,7 @@ export const products: Product[] = [
     format: "Tablet",
     code: "D-5000-TAB",
     accent: "blue",
-    image: "/vity-hero-d3-selen.jpg"
+    image: "/vity-d3-5000-tablets.png"
   },
   {
     slug: "d-vity-2000",
@@ -52,7 +52,7 @@ export const products: Product[] = [
     format: "Tablet",
     code: "D-2000-TAB",
     accent: "blue",
-    image: "/vity-hero-d3-selen.jpg"
+    image: "/vity-d3-2000.png"
   },
   {
     slug: "d-vity-400-kids",
@@ -64,7 +64,7 @@ export const products: Product[] = [
     purpose: "For children from 3 years",
     code: "D-400-KIDS",
     accent: "coral",
-    image: "/vity-hero-d3-selen.jpg"
+    image: "/vity-d3-400-kids.png"
   },
   {
     slug: "multi-vity-man",
@@ -146,7 +146,7 @@ export const products: Product[] = [
     purpose: "Support nervous system and metabolism.",
     code: "B-CMPLX-60",
     accent: "coral",
-    image: "/vity-lineup.png"
+    image: "/vity-b-complex.png"
   },
   {
     slug: "iron-40",
@@ -157,7 +157,7 @@ export const products: Product[] = [
     ingredients: ["Iron", "Vitamin B9", "Vitamin C"],
     code: "IRN-40-FOL",
     accent: "coral",
-    image: "/vity-lineup.png"
+    image: "/vity-iron-40-transparent.png"
   },
   {
     slug: "iron-20",
@@ -168,7 +168,7 @@ export const products: Product[] = [
     ingredients: ["Iron", "Vitamin B9", "Vitamin C"],
     code: "IRN-20-FOL",
     accent: "coral",
-    image: "/vity-lineup.png"
+    image: "/vity-iron-20-transparent.png"
   },
   {
     slug: "zinc-15",
@@ -180,7 +180,7 @@ export const products: Product[] = [
     purpose: "Single mineral product",
     code: "ZN-15",
     accent: "teal",
-    image: "/vity-lineup.png"
+    image: "/vity-zinc-15-transparent.png"
   }
 ];
 
