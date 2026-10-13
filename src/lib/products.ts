@@ -1,39 +1,57 @@
-export type Product = {
-  slug: string;
-  name: string;
-  category: string;
-  type: string;
-  formulation?: string;
-  ingredients: string[];
-  format?: string;
-  purpose?: string;
-  code?: string;
-  accent: "blue" | "teal" | "amber" | "coral";
-  image?: string;
-};
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { BadgeCheck, BookOpen, Boxes, Landmark } from "lucide-react";
+import { PageHero } from "@/components/page-hero"; import { ProductVisual } from "@/components/product-visual"; import { SectionHeading } from "@/components/section-heading"; import { Button } from "@/components/ui/button";
+import { useLang } from "@/lib/lang";
+import vityHeroD3SelenAsset from "@/assets/vity-hero-d3-selen.jpg.asset.json";
+export const Route=createFileRoute("/vity")({head:()=>({meta:[{title:"VITY Vitamins & Supplements — Exclusive EAEU Brand"},{name:"description",content:"Discover VITY, the British vitamins and supplements brand represented exclusively by 5D Group across the EAEU."},{property:"og:title",content:"VITY — Exclusive Brand Across the EAEU"},{property:"og:description",content:"British vitamins and supplements for professional EAEU distribution."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Vity});
 
-export const products: Product[] = [
-  { slug: "d-vity-5000-chewable", name: "VITAMIN D3 5000 IU Chewable tablets", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 5000\n5000 IU / 125 mcg", ingredients: ["Vitamin D3"], format: "Chewable · Natural raspberry flavor", code: "D-5000-CHW", accent: "blue", image: "/vity-d3-5000-chewable.png" },
-  { slug: "d-vity-5000-tablets", name: "VITAMIN D3 5000 IU tablets", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 5000\n5000 IU / 125 mcg", ingredients: ["Vitamin D3"], format: "Tablet", code: "D-5000-TAB", accent: "blue", image: "/vity-d3-5000-tablets.png" },
-  { slug: "d-vity-2000", name: "VITAMIN D3 2000 IU tablets", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 2000\n2000 IU / 50 mcg", ingredients: ["Vitamin D3"], format: "Tablet", code: "D-2000-TAB", accent: "blue", image: "/vity-d3-2000.png" },
-  { slug: "d-vity-400-kids", name: "VITAMIN D3 400 IU Chewable tablets for Kids", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 400 Kids\n400 IU / 10 mcg", ingredients: ["Vitamin D3"], purpose: "For children from 3 years", code: "D-400-KIDS", accent: "coral", image: "/vity-d3-400-kids.png" },
-  { slug: "multi-vity-man", name: "Multivitamins for men", category: "Multi-VITY — Multivitamins", type: "Multivitamins", formulation: "Multi-VITY MEN Multivitamins\u00a023 vital nutrients", ingredients: ["Magnesium", "Zinc", "Selenium", "Vitamin D3", "Vitamin B6", "Vitamin B12", "Vitamin C", "Vitamin E", "Vitamin K", "Iron", "Copper", "Chromium"], format: "Tablets", purpose: "Specialized formula intended to support high energy levels, muscle function, stress resilience and heart health.", accent: "blue", image: "/vity-multi-man.png" },
-  { slug: "multi-vity-woman", name: "Multivitamins for women", category: "Multi-VITY — Multivitamins", type: "Multivitamins", formulation: "Multi-VITY WOMEN Multivitamins 23 vital nutrients", ingredients: ["Iron", "Folic Acid (Vitamin B9)", "Biotin", "Zinc", "Vitamin D", "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12", "Calcium", "Iodine"], format: "Tablets", purpose: "Specialized formula intended to support healthy hair, skin and nails, digestion and women's vitality.", accent: "coral", image: "/vity-multi-woman.png" },
-  { slug: "multi-vity-kids", name: "Multivitamins for KIDS 3+", category: "Multi-VITY — Multivitamins", type: "Multivitamins", formulation: "Multi-VITY KIDS Multivitamins", ingredients: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin B1", "Vitamin B2", "Vitamin B3", "Vitamin B6", "Folic Acid (Vitamin B9)", "Vitamin B12", "Pantothenic Acid", "Iodine", "Iron", "Zinc"], format: "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties", purpose: "Intended to support children's immunity, normal bone and teeth development and physical energy.", accent: "amber", image: "/vity-multi-kids.png" },
-  { slug: "c-vity-1000", name: "VITAMIN C 1000 mg", category: "Immunity, Nervous System & Microflora", type: "Immunity", formulation: "C-VITY 1000\n1000 mg", ingredients: ["Vitamin C"], format: "Orange flavor", code: "C-1000-ORG", accent: "amber", image: "/vity-c-1000-transparent.png" },
-  { slug: "probiotic-vity", name: "PROBIOTIC with PREBIOTICS 6 Billion and VITAMIN C", category: "Immunity, Nervous System & Microflora", type: "Probiotics", formulation: "PROBIOTIV VITY \n6 billion live bacteria", ingredients: ["L. Bulgaricus", "L. Acidophilus", "L. Helveticus", "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"], code: "PRO-BIO-6B", accent: "teal", image: "/vity-probiotic.png" },
-  { slug: "selen-vity-100", name: "SELENIUM 100mcg\u00a0with ZINC 2mg \u00a0", category: "Immunity, Nervous System & Microflora", type: "SELEN-VITY", ingredients: ["Selenium"], purpose: "High bioavailability; positioned for stress management and thyroid support in the VITY B2B catalog.", accent: "teal", image: "/vity-selen-100-transparent.png" },
-  { slug: "b-complex-vity", name: "VITAMIN B COMPLEX", category: "Immunity, Nervous System & Microflora", type: "B-Complex", ingredients: ["B vitamins"], formulation: "B-COMPLEX VITY B vitamins", format: "Tablet", purpose: "Positioned for nervous system and metabolism support in the VITY B2B catalog.", code: "B-CMPLX-60", accent: "coral", image: "/vity-b-complex.png" },
-  { slug: "iron-40", name: "Iron 40 mg + B9 (Folic Acid) + Vitamin C", category: "Essential Minerals", type: "Iron", formulation: "Iron 40 mg", ingredients: ["Iron", "Vitamin B9", "Vitamin C"], code: "IRN-40-FOL", accent: "coral", image: "/vity-iron-40-transparent.png" },
-  { slug: "iron-20", name: "Iron 20 mg + B9 (Folic Acid) + Vitamin C", category: "Essential Minerals", type: "Iron", formulation: "Iron 20 mg", ingredients: ["Iron", "Vitamin B9", "Vitamin C"], code: "IRN-20-FOL", accent: "coral", image: "/vity-iron-20-transparent.png" },
-  { slug: "zinc-15", name: "Zinc 15 mg", category: "Essential Minerals", type: "Zinc", formulation: "Zinc VITY 15 mg", ingredients: ["Zinc"], purpose: "Single mineral product", code: "ZN-15", accent: "teal", image: "/vity-zinc-15-transparent.png" },
-];
+const icons = [Landmark, BadgeCheck, BookOpen, Boxes];
 
-export const categories = [
-  { slug: "d-vity", name: "D-VITY", subtitle: "Vitamin D3", description: "Four precisely identified Vitamin D3 formulations for adults and children." },
-  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes for men, women and children from the official catalog. Product codes await approved catalog detail." },
-  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Vitamin C, probiotics, selenium and B-complex products presented for professional distribution." },
-  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations using exact available catalog information." },
-];
+const copy = {
+  en: {
+    heroEyebrow: "Exclusive brand",
+    heroTitle: "VITY Vitamins & Supplements",
+    heroText: "British vitamins and supplements, exclusively represented and distributed by 5D Group throughout the EAEU.",
+    whyEyebrow: "Why VITY",
+    whyTitle: "A professional portfolio with a British identity",
+    cards: [
+      ["British Standards", "Positioned as a British vitamins and supplements brand."],
+      ["Quality Framework", "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."],
+      ["Professional B2B Focus", "An official B2B catalog supports professional commercial partnerships."],
+      ["Broad Portfolio", "Vitamins, multivitamins, probiotics, specialty supplements and minerals."],
+    ],
+    standardsEyebrow: "Quality & Standards",
+    standardsTitle: "Catalog-stated compliance framework",
+    standardsText: "The official VITY B2B catalog references the following standards and institutions. This presentation does not claim certifications beyond the catalog wording.",
+    standards: ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"],
+    exploreButton: "Explore products",
+  },
+  ru: {
+    heroEyebrow: "Эксклюзивный бренд",
+    heroTitle: "VITY Vitamins & Supplements",
+    heroText: "Британский бренд витаминов и пищевых добавок, эксклюзивным представителем и дистрибьютором которого на территории ЕАЭС является 5D Group.",
+    whyEyebrow: "Почему VITY",
+    whyTitle: "Профессиональный портфель с британской идентичностью",
+    cards: [
+      ["Британское происхождение", "VITY позиционируется как британский бренд витаминов и пищевых добавок."],
+      ["Стандарты качества", "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC."],
+      ["Профессиональный B2B-подход", "Официальный B2B-каталог VITY предназначен для делового сотрудничества."],
+      ["Широкий ассортимент", "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы."],
+    ],
+    standardsEyebrow: "Качество и стандарты",
+    standardsTitle: "Система соответствия согласно каталогу",
+    standardsText: "В официальном B2B-каталоге VITY упоминаются следующие стандарты и организации. Это не утверждение о наличии дополнительных сертификатов.",
+    standards: ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"],
+    exploreButton: "Смотреть продукцию",
+  },
+} as const;
 
-export function getProduct(slug: string) { return products.find((product) => product.slug === slug); }
+function Vity() {
+  const lang = useLang();
+  const t = copy[lang];
+  return <>
+    <PageHero eyebrow={t.heroEyebrow} title={t.heroTitle} text={t.heroText} aside={<ProductVisual name="VITY" accent="blue" image={vityHeroD3SelenAsset.url} large/>}/>
+    <section className="section-pad"><div className="section-shell"><SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle}/><div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">{t.cards.map(([title, text], i) => { const Icon = icons[i] as typeof Landmark; return <article className="rounded-lg border p-6" key={title}><Icon className="size-6 text-teal"/><h3 className="mt-5 font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></article>; })}</div></div></section>
+    <section className="section-pad border-y bg-surface"><div className="section-shell"><SectionHeading eyebrow={t.standardsEyebrow} title={t.standardsTitle} text={t.standardsText}/><div className="mt-10 flex flex-wrap gap-3">{t.standards.map(x=><span className="rounded-md border bg-background px-5 py-4 font-display text-sm font-bold text-primary" key={x}>{x}</span>)}</div><Button asChild className="mt-9"><Link to="/products">{t.exploreButton}</Link></Button></div></section>
+  </>;
+}
