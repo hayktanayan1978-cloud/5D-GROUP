@@ -50,7 +50,6 @@ function HomeComponent() {
 
   return (
     <div className="relative min-h-screen">
-      {/* Background Image Banner */}
       <div 
         className="relative bg-cover bg-center bg-no-repeat py-20 lg:py-32"
         style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.92) 30%, rgba(255,255,255,0.6) 100%), url('/vity-hero-d3-selen.jpg')` }}
@@ -81,7 +80,6 @@ function HomeComponent() {
               </div>
             </div>
 
-            {/* Right Stand Image */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 p-3 shadow-xl backdrop-blur-sm">
                 <img 
@@ -95,7 +93,6 @@ function HomeComponent() {
         </div>
       </div>
 
-      {/* Bottom Info Section */}
       <section className="bg-slate-50/80 py-16 border-t border-slate-200/60">
         <div className="section-shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
@@ -114,7 +111,6 @@ function HomeComponent() {
             </div>
           </div>
 
-          {/* 4 Cards */}
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.cards.map((card, idx) => {
               const Icon = card.icon;
