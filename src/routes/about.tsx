@@ -1,7 +1,57 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Building2, Globe2, Handshake, Layers3 } from "lucide-react";
-import { PageHero } from "@/components/page-hero";
-import { SectionHeading } from "@/components/section-heading";
-import { Button } from "@/components/ui/button";
-export const Route = createFileRoute("/about")({ head:()=>({meta:[{title:"About 5D Group — EAEU Distribution"},{name:"description",content:"Learn about 5D Group's pharmaceutical and nutraceutical distribution focus across the EAEU."},{property:"og:title",content:"About 5D Group"},{property:"og:description",content:"Professional B2B distribution and exclusive VITY representation across the EAEU."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}), component: About });
-function About(){const items=[[Building2,"Who we are","A pharmaceutical and nutraceutical distribution company focused on high-quality dietary supplements."],[Handshake,"What we do","Develop long-term B2B cooperation with distributors, pharmacy chains, marketplaces and professional partners."],[Globe2,"Our market","The Eurasian Economic Union: Armenia, Belarus, Kazakhstan, Kyrgyzstan and Russia."],[Layers3,"Our brand","Exclusive representation of British VITY Vitamins & Supplements throughout the EAEU."]];return <><PageHero eyebrow="About 5D Group" title="International outlook. Focused market development." text="5D Group connects a trusted British supplement portfolio with professional partners throughout the EAEU."/><section className="section-pad"><div className="section-shell"><SectionHeading eyebrow="Company profile" title="Built around focused representation and professional partnerships"/><div className="mt-12 grid gap-px overflow-hidden rounded-lg border bg-border md:grid-cols-2">{items.map(([Icon,t,x])=>{const I=Icon as typeof Building2;return <article className="bg-card p-8" key={t as string}><I className="size-6 text-teal"/><h3 className="mt-5 text-xl font-semibold">{t as string}</h3><p className="mt-3 leading-7 text-muted-foreground">{x as string}</p></article>})}</div></div></section><section className="section-pad border-y bg-surface"><div className="section-shell grid gap-10 lg:grid-cols-2"><SectionHeading eyebrow="Distribution approach" title="Clear, disciplined and partner-led" text="Our work is centered on representation, market development and professional distribution. We do not imply manufacturing or logistics capabilities beyond the information provided."/><div className="space-y-5 text-base leading-8 text-muted-foreground"><p>We support professional commercial conversations with clear product information and a focused portfolio.</p><p>We work toward long-term cooperation with organizations that can responsibly develop VITY across EAEU markets.</p><Button asChild><Link to="/partnership">Discuss partnership</Link></Button></div></div></section></>}
+import { createFileRoute } from "@tanstack/react-router";
+import { useLang } from "@/lib/lang";
+
+export const Route = createFileRoute("/about")({
+  component: AboutComponent,
+});
+
+function AboutComponent() {
+  const lang = useLang();
+
+  const content = {
+    en: {
+      badge: "ABOUT 5D GROUP",
+      title: "International outlook. Focused market development.",
+      desc: "5D Group connects a trusted British supplement portfolio with professional partners throughout the EAEU.",
+      profileTitle: "COMPANY PROFILE",
+      p1: "5D Group is a specialized distribution and commercial development business operating across Armenia and the broader Eurasian Economic Union.",
+      p2: "We focus on premium, registration-ready health products and work closely with international manufacturers to provide streamlined access to high-growth markets."
+    },
+    ru: {
+      badge: "О КОМПАНИИ 5D GROUP",
+      title: "Международный подход. Целевое развитие рынка.",
+      desc: "5D Group связывает надежный портфель британских БАД с профессиональными партнерами по всему ЕАЭС.",
+      profileTitle: "ПРОФИЛЬ КОМПАНИИ",
+      p1: "5D Group — специализированная дистрибьюторская и коммерческая компания, действующая в Армении и на территории Евразийского экономического союза.",
+      p2: "Мы специализируемся на премиальной продукции, готовой к регистрации, и тесно сотрудничаем с международными производителями для обеспечения эффективного выхода на быстрорастущие рынки."
+    }
+  };
+
+  const t = content[lang] || content.en;
+
+  return (
+    <div className="section-shell py-12 md:py-16">
+      <div className="max-w-3xl">
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">
+          {t.badge}
+        </span>
+        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          {t.title}
+        </h1>
+        <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          {t.desc}
+        </p>
+      </div>
+
+      <div className="mt-12 rounded-2xl border bg-card p-8 md:p-12">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+          {t.profileTitle}
+        </h2>
+        <div className="mt-4 space-y-4 text-base leading-7 text-foreground">
+          <p>{t.p1}</p>
+          <p>{t.p2}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
