@@ -3,11 +3,18 @@ import { Link } from "@tanstack/react-router";
 import { ChevronDown, Globe2, Menu, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { useLang } from "@/lib/lang";
 
-const nav = [
-  ["Home", "/"], ["About", "/about"], ["VITY", "/vity"], ["Products", "/products"],
-  ["EAEU Distribution", "/eaeu-distribution"], ["B2B Partnership", "/partnership"], ["Contact", "/contact"],
-] as const;
+const navLabels = {
+  en: [
+    ["Home", "/"], ["About", "/about"], ["VITY", "/vity"], ["Products", "/products"],
+    ["EAEU Distribution", "/eaeu-distribution"], ["B2B Partnership", "/partnership"], ["Contact", "/contact"]
+  ],
+  ru: [
+    ["Главная", "/"], ["О компании", "/about"], ["VITY", "/vity"], ["Продукция", "/products"],
+    ["Дистрибуция в ЕАЭС", "/eaeu-distribution"], ["B2B Партнерство", "/partnership"], ["Контакты", "/contact"]
+  ]
+};
 
 function Brand() { 
   return (
@@ -23,9 +30,11 @@ function Brand() {
 
 export function SiteHeader() {
   const [languageOpen, setLanguageOpen] = useState(false);
+  const lang = useLang();
+  const nav = navLabels[lang] || navLabels.en;
 
-  const changeLanguage = (lang: string) => {
-    localStorage.setItem("app_lang", lang);
+  const changeLanguage = (newLang: string) => {
+    localStorage.setItem("app_lang", newLang);
     window.dispatchEvent(new Event("storage"));
     setLanguageOpen(false);
     window.location.reload();
@@ -45,7 +54,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-2 lg:flex">
           <div className="relative">
             <Button variant="ghost" size="sm" onClick={() => setLanguageOpen(!languageOpen)} aria-expanded={languageOpen}>
-              <Globe2 /> Lang <ChevronDown className="size-3" />
+              <Globe2 /> {lang === "ru" ? "RU" : "EN"} <ChevronDown className="size-3" />
             </Button>
             {languageOpen && (
               <div className="absolute right-0 top-10 w-36 rounded-md border bg-popover p-1 shadow-lg z-50">
@@ -59,7 +68,7 @@ export function SiteHeader() {
             )}
           </div>
           <Button asChild size="sm">
-            <Link to="/contact">Partner inquiry <ArrowUpRight /></Link>
+            <Link to="/contact">{lang === "ru" ? "Запрос партнерства" : "Partner inquiry"} <ArrowUpRight /></Link>
           </Button>
         </div>
         <Sheet>
@@ -78,10 +87,10 @@ export function SiteHeader() {
               ))}
             </nav>
             <div className="mt-8 flex flex-col gap-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2 font-medium"><Globe2 className="size-4" /> Select Language:</div>
+              <div className="flex items-center gap-2 font-medium"><Globe2 className="size-4" /> Язык / Language:</div>
               <div className="flex gap-2 mt-1">
-                <Button size="sm" variant="outline" onClick={() => changeLanguage("en")}>English</Button>
-                <Button size="sm" variant="outline" onClick={() => changeLanguage("ru")}>Русский</Button>
+                <Button size="sm" variant={lang === "en" ? "default" : "outline"} onClick={() => changeLanguage("en")}>English</Button>
+                <Button size="sm" variant={lang === "ru" ? "default" : "outline"} onClick={() => changeLanguage("ru")}>Русский</Button>
               </div>
             </div>
           </SheetContent>
@@ -92,34 +101,38 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() { 
+  const lang = useLang();
   return (
     <footer className="border-t bg-surface">
       <div className="section-shell grid gap-10 py-12 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Brand />
-          <p className="mt-5 max-w-sm text-sm leading-6 text-muted-foreground">Exclusive VITY Vitamins & Supplements partner across the Eurasian Economic Union.</p>
+          <p className="mt-5 max-w-sm text-sm leading-6 text-muted-foreground">
+            {lang === "ru" 
+              ? "Эксклюзивный партнер VITY Vitamins & Supplements на территории Евразийского экономического союза." 
+              : "Exclusive VITY Vitamins & Supplements partner across the Eurasian Economic Union."}
+          </p>
         </div>
         <div>
-          <p className="text-sm font-bold text-foreground">Navigate</p>
+          <p className="text-sm font-bold text-foreground">{lang === "ru" ? "Навигация" : "Navigate"}</p>
           <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-muted-foreground">
-            <Link to="/about">About</Link>
+            <Link to="/about">{lang === "ru" ? "О нас" : "About"}</Link>
             <Link to="/vity">VITY</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/product-categories">Categories</Link>
-            <Link to="/partnership">Partnership</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/products">{lang === "ru" ? "Продукция" : "Products"}</Link>
+            <Link to="/partnership">{lang === "ru" ? "Партнерство" : "Partnership"}</Link>
+            <Link to="/contact">{lang === "ru" ? "Контакты" : "Contact"}</Link>
           </div>
         </div>
         <div>
-          <p className="text-sm font-bold text-foreground">Business inquiries</p>
+          <p className="text-sm font-bold text-foreground">{lang === "ru" ? "Запросы для бизнеса" : "Business inquiries"}</p>
           <a href="mailto:5dgrouppharma@gmail.com" className="mt-4 block text-sm font-semibold text-primary">5dgrouppharma@gmail.com</a>
           <p className="mt-3 text-sm text-muted-foreground">Pharmaceutical & Nutraceutical Distribution</p>
         </div>
       </div>
       <div className="border-t border-border">
         <div className="section-shell flex flex-col gap-2 py-5 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          <span>© 2026 5D Group. All rights reserved.</span>
-          <span>Dietary supplements are not medicines.</span>
+          <span>© 2026 5D Group. {lang === "ru" ? "Все права защищены." : "All rights reserved."}</span>
+          <span>{lang === "ru" ? "Биологически активные добавки не являются лекарственными средствами." : "Dietary supplements are not medicines."}</span>
         </div>
       </div>
     </footer>
