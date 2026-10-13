@@ -44,19 +44,23 @@ export const categories = [
   { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations using exact available catalog information." },
 ];
 
-export function getProduct(slug: string) { return products.find((product) => product.slug === slug); }
+export function getProduct(slug: string) { 
+  return products.find((product) => product.slug === slug); 
+}
 
 const russianCatalogText: Record<string, string> = {
   "D-VITY — Vitamin D3": "D-VITY — Витамин D3",
   "Multi-VITY — Multivitamins": "Multi-VITY — Мультивитамины",
   "Immunity, Nervous System & Microflora": "Иммунитет, нервная система и микрофлора",
   "Essential Minerals": "Минералы",
-  "Vitamin D3": "Витамин D3", "Multivitamins": "Мультивитамины",
-  "Immunity": "Витамины для иммунитета", "Probiotics": "Пробиотики",
-  "B-Complex": "Комплекс витаминов группы B", "Iron": "Железо", "Zinc": "Цинк",
-  "Selenium": "Селен", "Vitamin C": "Витамин C", "Vitamin B9": "Витамин B9",
-  "B vitamins": "Витамины группы B", "Prebiotics": "Пребиотики",
-  "Magnesium": "Магний", "Copper": "Медь", "Chromium": "Хром",
-  "Biotin": "Биотин", "Calcium": "Кальций", "Iodine": "Йод",
-  "Folic Acid (Vitamin B9)": "Фолиевая кислота (витамин B9)", "Pantothenic Acid": "Пантотеновая кислота",
-  "Tablet": "Таблетки", "
+  "Vitamin D3": "Витамин D3",
+  "Multivitamins": "Мультивитамины",
+  "Immunity": "Витамины для иммунитета",
+  "Probiotics": "Пробиотики",
+  "B-Complex": "Комплекс витаминов группы B",
+  "Iron": "Железо",
+  "Zinc": "Цинк",
+  "Selenium": "Селен",
+  "Vitamin C": "Витамин C",
+  "Vitamin B9": "Витамин B9",
+  "B vitamins": "Витамины
