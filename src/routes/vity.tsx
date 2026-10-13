@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, BookOpen, Boxes, Landmark } from "lucide-react";
-import { PageHero } from "@/components/page-hero"; 
-import { SectionHeading } from "@/components/section-heading"; 
+import { PageHero } from "@/components/page-hero";
+import { SectionHeading } from "@/components/section-heading";
 import { Button } from "@/components/ui/button";
+import { useLang } from "@/lib/lang";
 
 export const Route = createFileRoute("/vity")({
   head: () => ({
@@ -15,98 +16,96 @@ export const Route = createFileRoute("/vity")({
 });
 
 function Vity() {
-  const lang: "en" | "ru" = "en"; 
+  const lang = useLang();
   const isRu = lang === "ru";
 
   const copy = {
     heroEyebrow: isRu ? "Эксклюзивный бренд" : "Exclusive brand",
     heroTitle: "VITY Vitamins & Supplements",
-    heroText: isRu 
-      ? "Британский бренд витаминов и пищевых добавок, эксклюзивным представителем и дистрибьютором которого на территории ЕАЭС является 5D Group."
+    heroText: isRu
+      ? "Британские витамины и БАД, эксклюзивно представленные и дистрибутируемые 5D Group на всей территории ЕАЭС."
       : "British vitamins and supplements, exclusively represented and distributed by 5D Group throughout the EAEU.",
-    whyEyebrow: isRu ? "Почему VITY" : "Why VITY",
-    whyTitle: isRu ? "Профессиональный портфель с британской идентичностью" : "A professional portfolio with a British identity",
-    standardsEyebrow: isRu ? "Качество и стандарты" : "Quality & Standards",
-    standardsTitle: isRu ? "Система соответствия согласно каталогу" : "Catalog-stated compliance framework",
-    standardsText: isRu
-      ? "В официальном B2B-каталоге VITY упоминаются следующие стандарты и организации. Это не утверждение о наличии дополнительных сертификатов."
-      : "The official VITY B2B catalog references the following standards and institutions. This presentation does not claim certifications beyond the catalog wording.",
-    exploreButton: isRu ? "Смотреть продукцию" : "Explore products",
+    secTitle: isRu ? "Британский стандарт качества" : "British Quality Standard",
+    secDesc: isRu
+      ? "Полный портфель рецептур, разработанных для удовлетворения ключевых потребностей рынка ЕАЭС."
+      : "Comprehensive portfolio of formulations developed for key EAEU market demands.",
+    catalogBtn: isRu ? "Смотреть каталог" : "View Catalog",
+    partnerBtn: isRu ? "Запрос партнерства" : "Partner Inquiry",
+    cards: [
+      {
+        icon: BadgeCheck,
+        title: isRu ? "Британское качество" : "British Quality",
+        text: isRu
+          ? "Производство в Великобритании в соответствии с жесткими европейскими стандартами."
+          : "UK manufacturing under strict European quality standards."
+      },
+      {
+        icon: Boxes,
+        title: isRu ? "14+ Рецептур" : "14+ Formulations",
+        text: isRu
+          ? "Витамин D3, мультивитамины, пробиотики и целевые минеральные комплексы."
+          : "Vitamin D3, multivitamins, probiotics, and targeted mineral complexes."
+      },
+      {
+        icon: Landmark,
+        title: isRu ? "Готовность к ЕАЭС" : "EAEU Ready",
+        text: isRu
+          ? "Полное сопровождение госрегистрации и соответствие требованиям рынка."
+          : "Full regulatory documentation and compliance support across EAEU markets."
+      },
+      {
+        icon: BookOpen,
+        title: isRu ? "B2B Поддержка" : "B2B Support",
+        text: isRu
+          ? "Маркетинговые материалы, логистика и гибкие условия для дистрибьюторов."
+          : "Marketing assets, supply chain support, and distribution flexibility."
+      }
+    ]
   };
 
-  const cards = [
-    {
-      icon: Landmark,
-      title: isRu ? "Британское происхождение" : "British Standards",
-      text: isRu ? "VITY позиционируется как британский бренд витаминов и добавок." : "Positioned as a British vitamins and supplements brand."
-    },
-    {
-      icon: BadgeCheck,
-      title: isRu ? "Стандарты качества" : "Quality Framework",
-      text: isRu ? "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC." : "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."
-    },
-    {
-      icon: BookOpen,
-      title: isRu ? "Профессиональный B2B-подход" : "Professional B2B Focus",
-      text: isRu ? "Официальный B2B-каталог VITY предназначен для делового сотрудничества." : "An official B2B catalog supports professional commercial partnerships."
-    },
-    {
-      icon: Boxes,
-      title: isRu ? "Широкий ассортимент" : "Broad Portfolio",
-      text: isRu ? "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы." : "Vitamins, multivitamins, probiotics, specialty supplements and minerals."
-    }
-  ];
-
-  const standards = ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"];
-
   return (
-    <>
-      <PageHero 
-        eyebrow={copy.heroEyebrow} 
-        title={copy.heroTitle} 
-        text={copy.heroText} 
-        aside={
-          <div className="relative overflow-hidden rounded-2xl border bg-background p-2 shadow-lg">
-            <img 
-              src="/vity-hero-d3-selen.jpg" 
-              alt="VITY Hero Visual" 
-              className="h-auto w-full max-w-md rounded-xl object-contain lg:max-w-lg"
-            />
-          </div>
-        }
+    <div className="space-y-16 pb-16">
+      <PageHero
+        eyebrow={copy.heroEyebrow}
+        title={copy.heroTitle}
+        description={copy.heroText}
+        image="/vity-lineup.png"
       />
-      <section className="section-pad">
-        <div className="section-shell">
-          <SectionHeading eyebrow={copy.whyEyebrow} title={copy.whyTitle} />
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {cards.map((card) => { 
-              const Icon = card.icon;
-              return (
-                <article className="rounded-lg border bg-card p-6" key={card.title}>
-                  <Icon className="size-6 text-teal" />
-                  <h3 className="mt-5 font-semibold text-foreground">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{card.text}</p>
-                </article>
-              ); 
-            })}
-          </div>
+
+      <section className="section-shell">
+        <SectionHeading
+          title={copy.secTitle}
+          description={copy.secDesc}
+        />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {copy.cards.map((card, i) => {
+            const Icon = card.icon;
+            return (
+              <div key={i} className="rounded-2xl border bg-card p-6 transition-all hover:shadow-md">
+                <div className="grid size-12 place-items-center rounded-xl bg-teal/10 text-teal">
+                  <Icon className="size-6" />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-bold text-foreground">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {card.text}
+                </p>
+              </div>
+            );
+          })}
         </div>
-      </section>
-      <section className="section-pad border-y bg-surface">
-        <div className="section-shell">
-          <SectionHeading eyebrow={copy.standardsEyebrow} title={copy.standardsTitle} text={copy.standardsText} />
-          <div className="mt-10 flex flex-wrap gap-3">
-            {standards.map((x) => (
-              <span className="rounded-md border bg-background px-5 py-4 font-display text-sm font-bold text-primary" key={x}>
-                {x}
-              </span>
-            ))}
-          </div>
-          <Button asChild className="mt-9">
-            <Link to="/products">{copy.exploreButton}</Link>
+
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+          <Button asChild size="lg">
+            <Link to="/products">{copy.catalogBtn}</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/contact">{copy.partnerBtn}</Link>
           </Button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
