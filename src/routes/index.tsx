@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ShieldCheck, Globe, Award, Sparkles } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Globe, Award, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/lang";
 
@@ -12,61 +12,68 @@ function HomeComponent() {
   const isRu = lang === "ru";
 
   const t = {
-    badge: isRu ? "Эксклюзивный партнер VITY на территории ЕАЭС" : "Exclusive VITY partner across the EAEU",
-    title: isRu ? "Связываем надежные бренды пищевых добавок с рынком ЕАЭС." : "Connecting trusted supplement brands with the EAEU market.",
+    badge: isRu ? "Эксклюзивный партнер VITY в ЕАЭС" : "Exclusive VITY partner across the EAEU",
+    smallLabel: isRu ? "5D GROUP · ФАРМАЦЕВТИЧЕСКАЯ И НУТРИЦЕВТИЧЕСКАЯ ДИСТРИБУЦИЯ" : "5D GROUP · PHARMACEUTICAL & NUTRACEUTICAL DISTRIBUTION",
+    title: isRu ? "Связываем\nнадежные\nбренды пищевых\nдобавок с\nрынком ЕАЭС." : "Connecting\ntrusted\nsupplement brands\nwith the\nEAEU market.",
     desc: isRu 
-      ? "Эксклюзивное представительство и дистрибуция британских витаминов и добавок VITY на территории ЕАЭС." 
+      ? "Эксклюзивное представительство и дистрибуция витаминов и комплексов VITY из Великобритании на территории ЕАЭС." 
       : "Exclusive EAEU representation and distribution of VITY Vitamins & Supplements from the United Kingdom.",
-    btnCatalog: isRu ? "Каталог продукции ↗" : "Explore Products ↗",
-    btnPartner: isRu ? "B2B Партнерство" : "B2B Partnership",
+    btnCatalog: isRu ? "Каталог продукции VITY ↗" : "Explore Products ↗",
+    btnPartner: isRu ? "Стать партнером" : "B2B Partnership",
+    standLabel: isRu ? "ВЕЛИКОБРИТАНИЯ — ЕАЭС\nПрофессиональная B2B дистрибуция" : "UK — EAEU\nProfessional B2B distribution",
     secBadge: isRu ? "О КОМПАНИИ 5D GROUP" : "ABOUT 5D GROUP",
     secTitle: isRu ? "Надежный партнер для регулируемых и профессиональных рынков" : "Trusted Partner for Regulated & Professional Markets",
     secDesc: isRu
-      ? "5D Group — эксклюзивная дистрибьюторская компания, представляющая британский бренд VITY. Мы обеспечиваем полный цикл продвижения пищевых добавок на рынке ЕАЭС через аптеки и профессиональные торговые каналы."
-      : "5D Group is an exclusive distribution business representing British brand VITY, delivering high-quality dietary supplements across EAEU markets through pharmacy and professional channels.",
+      ? "Мы работаем с фармацевтическими дистрибьюторами, аптечными сетями, маркетплейсами и другими профессиональными партнерами. Как эксклюзивный представитель VITY Vitamins & Supplements на территории ЕАЭС, наша задача — развитие бренда через чёткое позиционирование и дисциплинированное B2B-сотрудничество."
+      : "We partner with pharmaceutical distributors, pharmacy chains, marketplaces, and other professional channels. As the exclusive representative of VITY Vitamins & Supplements in the EAEU, our focus is on brand development through precise positioning and disciplined B2B collaboration.",
     cards: [
       {
         icon: Globe,
         title: isRu ? "Рынок ЕАЭС" : "EAEU Market",
-        desc: isRu ? "Дистрибуция в Армении и других странах Евразийского союза." : "Distribution in Armenia and across the Eurasian Economic Union."
+        desc: isRu ? "Дистрибуция на территории Евразийского союза." : "Distribution across the Eurasian Economic Union."
       },
       {
         icon: Sparkles,
-        title: isRu ? "14+ Активных Позиций" : "14+ Formulations",
-        desc: isRu ? "Полный портфель рецептур VITY." : "Complete VITY product range."
+        title: isRu ? "Эксклюзивный бренд" : "Exclusive Brand",
+        desc: isRu ? "VITY Vitamins & Supplements." : "VITY Vitamins & Supplements."
       },
       {
         icon: Award,
-        title: isRu ? "Импорт из Великобритании" : "UK Origin",
-        desc: isRu ? "Британское качество и стандарты." : "British quality and standards."
+        title: isRu ? "Фокус на B2B" : "B2B Focus",
+        desc: isRu ? "Профессиональная дистрибуция и партнерство." : "Professional distribution and partnerships."
       },
       {
         icon: ShieldCheck,
-        title: isRu ? "Стандарты Качества" : "Quality Assurance",
-        desc: isRu ? "Официальная госрегистрация и сертификация." : "Full compliance and official registration."
+        title: isRu ? "Стандарты качества" : "Quality Standards",
+        desc: isRu ? "Международная система контроля качества." : "International quality control systems."
       }
     ]
   };
 
   return (
-    <div className="relative min-h-screen">
-      <div 
-        className="relative bg-cover bg-center bg-no-repeat py-20 lg:py-32"
-        style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.92) 30%, rgba(255,255,255,0.6) 100%), url('/vity-hero-d3-selen.jpg')` }}
+    <div className="relative min-h-screen bg-background">
+      {/* Huge Natural Lab Hero Section */}
+      <section 
+        className="relative border-b border-slate-200/50 bg-cover bg-center bg-no-repeat py-16 md:py-24 lg:py-32"
+        style={{ backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.4) 100%), url('/laboratory-bg.jpg')` }}
       >
         <div className="section-shell relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/10 px-3.5 py-1 text-xs font-semibold text-teal">
-                <span className="size-2 rounded-full bg-teal" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/10 px-3 py-0.5 text-[11px] font-semibold text-teal-800">
+                <span className="size-1.5 rounded-full bg-teal" />
                 {t.badge}
               </div>
 
-              <h1 className="mt-6 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.15]">
+              <div className="mt-4 text-[10px] font-bold uppercase tracking-wider text-teal-800/80">
+                {t.smallLabel}
+              </div>
+
+              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.1] whitespace-pre-line">
                 {t.title}
               </h1>
 
-              <p className="mt-6 max-w-xl text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              <p className="mt-6 max-w-lg text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                 {t.desc}
               </p>
 
@@ -80,27 +87,34 @@ function HomeComponent() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white/80 p-3 shadow-xl backdrop-blur-sm">
+            {/* Natural Product Stand on the Right */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-sm overflow-hidden bg-transparent">
                 <img 
                   src="/vity-lineup.png" 
-                  alt="VITY Products Display" 
-                  className="w-full object-contain rounded-xl"
+                  alt="VITY Products" 
+                  className="w-full object-contain"
                 />
+                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm border border-slate-200/85 p-3 rounded-xl shadow-md text-right">
+                  <p className="text-[10px] font-mono font-extrabold text-slate-800 uppercase tracking-wider whitespace-pre-line">
+                    {t.standLabel}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <section className="bg-slate-50/80 py-16 border-t border-slate-200/60">
+      {/* Info & Company Profile Section */}
+      <section className="bg-white py-16">
         <div className="section-shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
               <span className="text-xs font-bold uppercase tracking-wider text-teal">
                 {t.secBadge}
               </span>
-              <h2 className="mt-3 font-display text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
+              <h2 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold text-slate-900 leading-snug">
                 {t.secTitle}
               </h2>
             </div>
@@ -111,11 +125,12 @@ function HomeComponent() {
             </div>
           </div>
 
+          {/* 4 Custom Subtle Cards */}
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.cards.map((card, idx) => {
               const Icon = card.icon;
               return (
-                <div key={idx} className="rounded-xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all hover:shadow-md">
+                <div key={idx} className="rounded-xl border border-slate-100 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white">
                   <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
                     <Icon className="size-5" />
                   </div>
