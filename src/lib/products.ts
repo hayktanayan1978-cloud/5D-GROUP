@@ -1,99 +1,113 @@
-export interface Product {
+import dVity5000ChewableAsset from "@/assets/vity-d3-5000-chewable.png.asset.json";
+import dVity5000TabletsAsset from "@/assets/vity-d3-5000-tablets.png.asset.json";
+import dVity400KidsAsset from "@/assets/vity-d3-400-kids.png.asset.json";
+import dVity2000Asset from "@/assets/vity-d3-2000.png.asset.json";
+import cVity1000Transparent from "@/assets/vity-c-1000-transparent.png";
+import selenTransparent from "@/assets/vity-selen-100-transparent.png";
+import probioticAsset from "@/assets/vity-probiotic.png.asset.json";
+import bComplexAsset from "@/assets/vity-b-complex.png.asset.json";
+import iron40Transparent from "@/assets/vity-iron-40-transparent.png";
+import iron20Transparent from "@/assets/vity-iron-20-transparent.png";
+import zinc15Transparent from "@/assets/vity-zinc-15-transparent.png";
+import multiManAsset from "@/assets/vity-multi-man.png.asset.json";
+import multiWomanAsset from "@/assets/vity-multi-woman.png.asset.json";
+import multiKidsAsset from "@/assets/vity-multi-kids.png.asset.json";
+
+export type Lang = "en" | "ru";
+
+export type Product = {
   slug: string;
   name: string;
   category: string;
-  brand: string;
-  shortDesc: {
-    en: string;
-    ru: string;
-  };
-  fullDesc: {
-    en: string;
-    ru: string;
-  };
-  features: {
-    en: string[];
-    ru: string[];
-  };
-}
-
-export const categories = [
-  "Vitamins",
-  "Minerals",
-  "Multivitamins",
-  "Probiotics",
-  "Specialty Supplements"
-];
-
-export const catalogText = {
-  en: {
-    title: "Product Catalog",
-    subtitle: "Explore our professional portfolio of VITY supplements across the EAEU.",
-    searchPlaceholder: "Search products...",
-    allCategories: "All Categories",
-  },
-  ru: {
-    title: "Каталог продукции",
-    subtitle: "Ознакомьтесь с нашим профессиональным портфелем БАД VITY в ЕАЭС.",
-    searchPlaceholder: "Поиск продукции...",
-    allCategories: "Все категории",
-  }
+  type: string;
+  formulation?: string;
+  ingredients: string[];
+  format?: string;
+  purpose?: string;
+  code?: string;
+  accent: "blue" | "teal" | "amber" | "coral";
+  image?: string;
 };
 
 export const products: Product[] = [
-  {
-    slug: "vity-d3-5000",
-    name: "VITY Vitamin D3 5000 IU",
-    category: "Vitamins",
-    brand: "VITY",
-    shortDesc: {
-      en: "High-potency Vitamin D3 for bone, muscle, and immune support.",
-      ru: "Высокоэффективный витамин D3 для поддержки костей, мышц и иммунитета."
-    },
-    fullDesc: {
-      en: "Essential daily D3 supplementation formulated to professional standards for optimal bioavailability.",
-      ru: "Ежедневный прием витамина D3, разработанный по профессиональным стандартам для оптимальной усвояемости."
-    },
-    features: {
-      en: ["5000 IU per serving", "Immune system support", "Bone health & density"],
-      ru: ["5000 МЕ в порции", "Поддержка иммунной системы", "Здоровье и прочность костей"]
-    }
-  },
-  {
-    slug: "vity-selen-100",
-    name: "VITY Selen 100 mcg",
-    category: "Minerals",
-    brand: "VITY",
-    shortDesc: {
-      en: "Essential trace mineral for thyroid health and antioxidant protection.",
-      ru: "Необходимый микроэлемент для здоровья щитовидной железы и антиоксидантной защиты."
-    },
-    fullDesc: {
-      en: "Premium selenium formula supporting cellular defense and metabolic regulation across adult populations.",
-      ru: "Формула селена премиум-класса для клеточной защиты и регуляции обмена веществ."
-    },
-    features: {
-      en: ["100 mcg elemental selenium", "Antioxidant protection", "Thyroid function support"],
-      ru: ["100 мкг элементарного селена", "Антиоксидантная защита", "Поддержка функции щитовидной железы"]
-    }
-  }
+  { slug: "d-vity-5000-chewable", name: "VITAMIN D3 5000 IU Chewable tablets", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 5000\n5000 IU / 125 mcg", ingredients: ["Vitamin D3"], format: "Chewable · Natural raspberry flavor", code: "D-5000-CHW", accent: "blue", image: dVity5000ChewableAsset.url },
+  { slug: "d-vity-5000-tablets", name: "VITAMIN D3 5000 IU tablets", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 5000\n5000 IU / 125 mcg", ingredients: ["Vitamin D3"], format: "Tablet", code: "D-5000-TAB", accent: "blue", image: dVity5000TabletsAsset.url },
+  { slug: "d-vity-2000", name: "VITAMIN D3 2000 IU tablets", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 2000\n2000 IU / 50 mcg", ingredients: ["Vitamin D3"], format: "Tablet", code: "D-2000-TAB", accent: "blue", image: dVity2000Asset.url },
+  { slug: "d-vity-400-kids", name: "VITAMIN D3 400 IU Chewable tablets for Kids", category: "D-VITY — Vitamin D3", type: "Vitamin D3", formulation: "D-VITY 400 Kids\n400 IU / 10 mcg", ingredients: ["Vitamin D3"], purpose: "For children from 3 years", code: "D-400-KIDS", accent: "coral", image: dVity400KidsAsset.url },
+  { slug: "multi-vity-man", name: "Multivitamins for men", category: "Multi-VITY — Multivitamins", type: "Multivitamins", formulation: "Multi-VITY MEN Multivitamins 23 vital nutrients", ingredients: ["Magnesium", "Zinc", "Selenium", "Vitamin D3", "Vitamin B6", "Vitamin B12", "Vitamin C", "Vitamin E", "Vitamin K", "Iron", "Copper", "Chromium"], format: "Tablets", purpose: "Specialized formula intended to support high energy levels, muscle function, stress resilience and heart health.", accent: "blue", image: multiManAsset.url },
+  { slug: "multi-vity-woman", name: "Multivitamins for women", category: "Multi-VITY — Multivitamins", type: "Multivitamins", formulation: "Multi-VITY WOMEN Multivitamins 23 vital nutrients", ingredients: ["Iron", "Folic Acid (Vitamin B9)", "Biotin", "Zinc", "Vitamin D", "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12", "Calcium", "Iodine"], format: "Tablets", purpose: "Specialized formula intended to support healthy hair, skin and nails, digestion and women's vitality.", accent: "coral", image: multiWomanAsset.url },
+  { slug: "multi-vity-kids", name: "Multivitamins for KIDS 3+", category: "Multi-VITY — Multivitamins", type: "Multivitamins", formulation: "Multi-VITY KIDS Multivitamins", ingredients: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin B1", "Vitamin B2", "Vitamin B3", "Vitamin B6", "Folic Acid (Vitamin B9)", "Vitamin B12", "Pantothenic Acid", "Iodine", "Iron", "Zinc"], format: "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties", purpose: "Intended to support children's immunity, normal bone and teeth development and physical energy.", accent: "amber", image: multiKidsAsset.url },
+  { slug: "c-vity-1000", name: "VITAMIN C 1000 mg", category: "Immunity, Nervous System & Microflora", type: "Immunity", formulation: "C-VITY 1000\n1000 mg", ingredients: ["Vitamin C"], format: "Orange flavor", code: "C-1000-ORG", accent: "amber", image: cVity1000Transparent },
+  { slug: "probiotic-vity", name: "PROBIOTIC with PREBIOTICS 6 Billion and VITAMIN C", category: "Immunity, Nervous System & Microflora", type: "Probiotics", formulation: "PROBIOTIV VITY \n6 billion live bacteria", ingredients: ["L. Bulgaricus", "L. Acidophilus", "L. Helveticus", "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"], code: "PRO-BIO-6B", accent: "teal", image: probioticAsset.url },
+  { slug: "selen-vity-100", name: "SELENIUM 100mcg with ZINC 2mg  ", category: "Immunity, Nervous System & Microflora", type: "SELEN-VITY", ingredients: ["Selenium"], purpose: "High bioavailability; positioned for stress management and thyroid support in the VITY B2B catalog.", accent: "teal", image: selenTransparent },
+  { slug: "b-complex-vity", name: "VITAMIN B COMPLEX", category: "Immunity, Nervous System & Microflora", type: "B-Complex", ingredients: ["B vitamins"], formulation: "B-COMPLEX VITY B vitamins", format: "Tablet", purpose: "Positioned for nervous system and metabolism support in the VITY B2B catalog.", code: "B-CMPLX-60", accent: "coral", image: bComplexAsset.url },
+  { slug: "iron-40", name: "Iron 40 mg + B9 (Folic Acid) + Vitamin C", category: "Essential Minerals", type: "Iron", formulation: "Iron 40 mg", ingredients: ["Iron", "Vitamin B9", "Vitamin C"], code: "IRN-40-FOL", accent: "coral", image: iron40Transparent },
+  { slug: "iron-20", name: "Iron 20 mg + B9 (Folic Acid) + Vitamin C", category: "Essential Minerals", type: "Iron", formulation: "Iron 20 mg", ingredients: ["Iron", "Vitamin B9", "Vitamin C"], code: "IRN-20-FOL", accent: "coral", image: iron20Transparent },
+  { slug: "zinc-15", name: "Zinc 15 mg", category: "Essential Minerals", type: "Zinc", formulation: "Zinc VITY 15 mg", ingredients: ["Zinc"], purpose: "Single mineral product", code: "ZN-15", accent: "teal", image: zinc15Transparent },
 ];
 
-export function getProduct(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
+export const categories = [
+  { slug: "d-vity", name: "D-VITY", subtitle: "Vitamin D3", description: "Four precisely identified Vitamin D3 formulations for adults and children." },
+  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes for men, women and children from the official catalog. Product codes await approved catalog detail." },
+  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Vitamin C, probiotics, selenium and B-complex products presented for professional distribution." },
+  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations using exact available catalog information." },
+];
+
+export function getProduct(slug: string) { return products.find((product) => product.slug === slug); }
+
+const russianCatalogText: Record<string, string> = {
+  "D-VITY — Vitamin D3": "D-VITY — Витамин D3",
+  "Multi-VITY — Multivitamins": "Multi-VITY — Мультивитамины",
+  "Immunity, Nervous System & Microflora": "Иммунитет, нервная система и микрофлора",
+  "Essential Minerals": "Минералы",
+  "Vitamin D3": "Витамин D3", "Multivitamins": "Мультивитамины",
+  "Immunity": "Витамины для иммунитета", "Probiotics": "Пробиотики",
+  "B-Complex": "Комплекс витаминов группы B", "Iron": "Железо", "Zinc": "Цинк",
+  "Selenium": "Селен", "Vitamin C": "Витамин C", "Vitamin B9": "Витамин B9",
+  "B vitamins": "Витамины группы B", "Prebiotics": "Пребиотики",
+  "Magnesium": "Магний", "Copper": "Медь", "Chromium": "Хром",
+  "Biotin": "Биотин", "Calcium": "Кальций", "Iodine": "Йод",
+  "Folic Acid (Vitamin B9)": "Фолиевая кислота (витамин B9)", "Pantothenic Acid": "Пантотеновая кислота",
+  "Tablet": "Таблетки", "Tablets": "Таблетки",
+  "Chewable · Natural raspberry flavor": "Жевательные таблетки · натуральный вкус малины",
+  "Orange flavor": "Апельсиновый вкус",
+  "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties": "Жевательные таблетки для детей от 3 лет · фруктовый вкус, 4 разновидности витаминов",
+  "For children from 3 years": "Для детей от 3 лет",
+  "Specialized formula intended to support high energy levels, muscle function, stress resilience and heart health.": "Согласно каталогу, специализированная формула предназначена для поддержки энергии, работы мышц, устойчивости к стрессу и здоровья сердца.",
+  "Specialized formula intended to support healthy hair, skin and nails, digestion and women's vitality.": "Согласно каталогу, специализированная формула предназначена для поддержки здоровья волос, кожи и ногтей, пищеварения и жизненного тонуса женщин.",
+  "Intended to support children's immunity, normal bone and teeth development and physical energy.": "Согласно каталогу, предназначен для поддержки иммунитета детей, нормального развития костей и зубов и физической активности.",
+  "High bioavailability; positioned for stress management and thyroid support in the VITY B2B catalog.": "Согласно B2B-каталогу VITY, характеризуется высокой биодоступностью и позиционируется для поддержки при стрессе и функции щитовидной железы.",
+  "Positioned for nervous system and metabolism support in the VITY B2B catalog.": "В B2B-каталоге VITY позиционируется для поддержки нервной системы и обмена веществ.",
+  "Single mineral product": "Продукт с одним минеральным компонентом",
+  "D-VITY 5000\n5000 IU / 125 mcg": "D-VITY 5000\n5000 МЕ / 125 мкг",
+  "D-VITY 2000\n2000 IU / 50 mcg": "D-VITY 2000\n2000 МЕ / 50 мкг",
+  "D-VITY 400 Kids\n400 IU / 10 mcg": "D-VITY 400 Kids\n400 МЕ / 10 мкг",
+  "Multi-VITY MEN Multivitamins 23 vital nutrients": "Multi-VITY MEN · 23 жизненно важных питательных вещества",
+  "Multi-VITY WOMEN Multivitamins 23 vital nutrients": "Multi-VITY WOMEN · 23 жизненно важных питательных вещества",
+  "Multi-VITY KIDS Multivitamins": "Multi-VITY KIDS · Мультивитамины",
+  "C-VITY 1000\n1000 mg": "C-VITY 1000\n1000 мг",
+  "PROBIOTIV VITY \n6 billion live bacteria": "PROBIOTIV VITY \n6 миллиардов живых бактерий",
+  "B-COMPLEX VITY B vitamins": "B-COMPLEX VITY · Витамины группы B",
+  "Iron 40 mg": "Железо 40 мг", "Iron 20 mg": "Железо 20 мг", "Zinc VITY 15 mg": "Zinc VITY 15 мг",
+};
+
+export function catalogText(value: string, lang: Lang): string {
+  if (lang === "en") return value;
+  return russianCatalogText[value] ?? (value.startsWith("Vitamin ") ? value.replace("Vitamin ", "Витамин ") : value);
 }
 
-export function localizeProduct(product: Product, lang: "en" | "ru") {
-  if (!product) return null;
-  const l = lang === "ru" ? "ru" : "en";
+export function localizeProduct(product: Product, lang: Lang): Product {
+  if (!product) return product;
+  if (lang === "en") return product;
   return {
     ...product,
-    shortDesc: product.shortDesc?.[l] || product.shortDesc?.en || "",
-    fullDesc: product.fullDesc?.[l] || product.fullDesc?.en || "",
-    features: Array.isArray(product.features?.[l]) 
-      ? product.features[l] 
-      : Array.isArray(product.features?.en) 
-        ? product.features.en 
-        : []
+    category: catalogText(product.category, lang),
+    type: catalogText(product.type, lang),
+    ingredients: Array.isArray(product.ingredients) 
+      ? product.ingredients.map(value => catalogText(value, lang))
+      : [],
+    ...(product.formulation ? { formulation: catalogText(product.formulation, lang) } : {}),
+    ...(product.format ? { format: catalogText(product.format, lang) } : {}),
+    ...(product.purpose ? { purpose: catalogText(product.purpose, lang) } : {}),
   };
 }
