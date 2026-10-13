@@ -31,36 +31,4 @@ export const products: Product[] = [
   { slug: "c-vity-1000", name: "VITAMIN C 1000 mg", category: "Immunity, Nervous System & Microflora", type: "Immunity", formulation: "C-VITY 1000\n1000 mg", ingredients: ["Vitamin C"], format: "Orange flavor", code: "C-1000-ORG", accent: "amber", image: cVity1000Transparent },
   { slug: "probiotic-vity", name: "PROBIOTIC with PREBIOTICS 6 Billion and VITAMIN C", category: "Immunity, Nervous System & Microflora", type: "Probiotics", formulation: "PROBIOTIV VITY \n6 billion live bacteria", ingredients: ["L. Bulgaricus", "L. Acidophilus", "L. Helveticus", "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"], code: "PRO-BIO-6B", accent: "teal", image: "/vity-probiotic.png" },
   { slug: "selen-vity-100", name: "SELENIUM 100mcg with ZINC 2mg  ", category: "Immunity, Nervous System & Microflora", type: "SELEN-VITY", ingredients: ["Selenium"], purpose: "High bioavailability; positioned for stress management and thyroid support in the VITY B2B catalog.", accent: "teal", image: selenTransparent },
-  { slug: "b-complex-vity", name: "VITAMIN B COMPLEX", category: "Immunity, Nervous System & Microflora", type: "B-Complex", ingredients: ["B vitamins"], formulation: "B-COMPLEX VITY B vitamins", format: "Tablet", purpose: "Positioned for nervous system and metabolism support in the VITY B2B catalog.", code: "B-CMPLX-60", accent: "coral", image: "/vity-lineup.png" },
-  { slug: "iron-40", name: "Iron 40 mg + B9 (Folic Acid) + Vitamin C", category: "Essential Minerals", type: "Iron", formulation: "Iron 40 mg", ingredients: ["Iron", "Vitamin B9", "Vitamin C"], code: "IRN-40-FOL", accent: "coral", image: iron40Transparent },
-  { slug: "iron-20", name: "Iron 20 mg + B9 (Folic Acid) + Vitamin C", category: "Essential Minerals", type: "Iron", formulation: "Iron 20 mg", ingredients: ["Iron", "Vitamin B9", "Vitamin C"], code: "IRN-20-FOL", accent: "coral", image: iron20Transparent },
-  { slug: "zinc-15", name: "Zinc 15 mg", category: "Essential Minerals", type: "Zinc", formulation: "Zinc VITY 15 mg", ingredients: ["Zinc"], purpose: "Single mineral product", code: "ZN-15", accent: "teal", image: zinc15Transparent },
-];
-
-export const categories = [
-  { slug: "d-vity", name: "D-VITY", subtitle: "Vitamin D3", description: "Four precisely identified Vitamin D3 formulations for adults and children." },
-  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes for men, women and children from the official catalog. Product codes await approved catalog detail." },
-  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Vitamin C, probiotics, selenium and B-complex products presented for professional distribution." },
-  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations using exact available catalog information." },
-];
-
-export function getProduct(slug: string) { 
-  return products.find((product) => product.slug === slug); 
-}
-
-const russianCatalogText: Record<string, string> = {
-  "D-VITY — Vitamin D3": "D-VITY — Витамин D3",
-  "Multi-VITY — Multivitamins": "Multi-VITY — Мультивитамины",
-  "Immunity, Nervous System & Microflora": "Иммунитет, нервная система и микрофлора",
-  "Essential Minerals": "Минералы",
-  "Vitamin D3": "Витамин D3",
-  "Multivitamins": "Мультивитамины",
-  "Immunity": "Витамины для иммунитета",
-  "Probiotics": "Пробиотики",
-  "B-Complex": "Комплекс витаминов группы B",
-  "Iron": "Железо",
-  "Zinc": "Цинк",
-  "Selenium": "Селен",
-  "Vitamin C": "Витамин C",
-  "Vitamin B9": "Витамин B9",
-  "B vitamins": "Витамины
+  { slug: "b-complex-vity", name: "VITAMIN B COMPLEX", category: "Immunity, Nervous System & Micro
