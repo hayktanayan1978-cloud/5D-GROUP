@@ -15,65 +15,58 @@ export const Route = createFileRoute("/vity")({
   component: Vity
 });
 
-const cardsData = [
-  {
-    icon: Landmark,
-    en: ["British Standards", "Positioned as a British vitamins and supplements brand."],
-    ru: ["Британское происхождение", "VITY позиционируется как британский бренд витаминов и добавок."]
-  },
-  {
-    icon: BadgeCheck,
-    en: ["Quality Framework", "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."],
-    ru: ["Стандарты качества", "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC."]
-  },
-  {
-    icon: BookOpen,
-    en: ["Professional B2B Focus", "An official B2B catalog supports professional commercial partnerships."],
-    ru: ["Профессиональный B2B-подход", "Официальный B2B-каталог VITY предназначен для делового сотрудничества."]
-  },
-  {
-    icon: Boxes,
-    en: ["Broad Portfolio", "Vitamins, multivitamins, probiotics, specialty supplements and minerals."],
-    ru: ["Широкий ассортимент", "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы."]
-  }
-];
-
-const copy = {
-  en: {
-    heroEyebrow: "Exclusive brand",
-    heroTitle: "VITY Vitamins & Supplements",
-    heroText: "British vitamins and supplements, exclusively represented and distributed by 5D Group throughout the EAEU.",
-    whyEyebrow: "Why VITY",
-    whyTitle: "A professional portfolio with a British identity",
-    standardsEyebrow: "Quality & Standards",
-    standardsTitle: "Catalog-stated compliance framework",
-    standardsText: "The official VITY B2B catalog references the following standards and institutions. This presentation does not claim certifications beyond the catalog wording.",
-    standards: ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"],
-    exploreButton: "Explore products",
-  },
-  ru: {
-    heroEyebrow: "Эксклюзивный бренд",
-    heroTitle: "VITY Vitamins & Supplements",
-    heroText: "Британский бренд витаминов и пищевых добавок, эксклюзивным представителем и дистрибьютором которого на территории ЕАЭС является 5D Group.",
-    whyEyebrow: "Почему VITY",
-    whyTitle: "Профессиональный портфель с британской идентичностью",
-    standardsEyebrow: "Качество и стандарты",
-    standardsTitle: "Система соответствия согласно каталогу",
-    standardsText: "В официальном B2B-каталоге VITY упоминаются следующие стандарты и организации. Это не утверждение о наличии дополнительных сертификатов.",
-    standards: ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"],
-    exploreButton: "Смотреть продукцию",
-  },
-} as const;
-
 function Vity() {
   const lang = useLang();
-  const t = copy[lang];
+  
+  const isRu = lang === "ru";
+
+  const copy = {
+    heroEyebrow: isRu ? "Эксклюзивный бренд" : "Exclusive brand",
+    heroTitle: "VITY Vitamins & Supplements",
+    heroText: isRu 
+      ? "Британский бренд витаминов и пищевых добавок, эксклюзивным представителем и дистрибьютором которого на территории ЕАЭС является 5D Group."
+      : "British vitamins and supplements, exclusively represented and distributed by 5D Group throughout the EAEU.",
+    whyEyebrow: isRu ? "Почему VITY" : "Why VITY",
+    whyTitle: isRu ? "Профессиональный портфель с британской идентичностью" : "A professional portfolio with a British identity",
+    standardsEyebrow: isRu ? "Качество и стандарты" : "Quality & Standards",
+    standardsTitle: isRu ? "Система соответствия согласно каталогу" : "Catalog-stated compliance framework",
+    standardsText: isRu
+      ? "В официальном B2B-каталоге VITY упоминаются следующие стандарты и организации. Это не утверждение о наличии дополнительных сертификатов."
+      : "The official VITY B2B catalog references the following standards and institutions. This presentation does not claim certifications beyond the catalog wording.",
+    exploreButton: isRu ? "Смотреть продукцию" : "Explore products",
+  };
+
+  const cards = [
+    {
+      icon: Landmark,
+      title: isRu ? "Британское происхождение" : "British Standards",
+      text: isRu ? "VITY позиционируется как британский бренд витаминов и добавок." : "Positioned as a British vitamins and supplements brand."
+    },
+    {
+      icon: BadgeCheck,
+      title: isRu ? "Стандарты качества" : "Quality Framework",
+      text: isRu ? "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC." : "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."
+    },
+    {
+      icon: BookOpen,
+      title: isRu ? "Профессиональный B2B-подход" : "Professional B2B Focus",
+      text: isRu ? "Официальный B2B-каталог VITY предназначен для делового сотрудничества." : "An official B2B catalog supports professional commercial partnerships."
+    },
+    {
+      icon: Boxes,
+      title: isRu ? "Широкий ассортимент" : "Broad Portfolio",
+      text: isRu ? "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы." : "Vitamins, multivitamins, probiotics, specialty supplements and minerals."
+    }
+  ];
+
+  const standards = ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"];
+
   return (
     <>
       <PageHero 
-        eyebrow={t.heroEyebrow} 
-        title={t.heroTitle} 
-        text={t.heroText} 
+        eyebrow={copy.heroEyebrow} 
+        title={copy.heroTitle} 
+        text={copy.heroText} 
         aside={
           <div className="relative overflow-hidden rounded-2xl border bg-background p-2 shadow-lg">
             <img 
@@ -86,16 +79,15 @@ function Vity() {
       />
       <section className="section-pad">
         <div className="section-shell">
-          <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
+          <SectionHeading eyebrow={copy.whyEyebrow} title={copy.whyTitle} />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {cardsData.map((card) => { 
+            {cards.map((card) => { 
               const Icon = card.icon;
-              const [cardTitle, cardText] = card[lang];
               return (
-                <article className="rounded-lg border bg-card p-6" key={cardTitle}>
+                <article className="rounded-lg border bg-card p-6" key={card.title}>
                   <Icon className="size-6 text-teal" />
-                  <h3 className="mt-5 font-semibold text-foreground">{cardTitle}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{cardText}</p>
+                  <h3 className="mt-5 font-semibold text-foreground">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{card.text}</p>
                 </article>
               ); 
             })}
@@ -104,16 +96,16 @@ function Vity() {
       </section>
       <section className="section-pad border-y bg-surface">
         <div className="section-shell">
-          <SectionHeading eyebrow={t.standardsEyebrow} title={t.standardsTitle} text={t.standardsText} />
+          <SectionHeading eyebrow={copy.standardsEyebrow} title={copy.standardsTitle} text={copy.standardsText} />
           <div className="mt-10 flex flex-wrap gap-3">
-            {t.standards.map((x) => (
+            {standards.map((x) => (
               <span className="rounded-md border bg-background px-5 py-4 font-display text-sm font-bold text-primary" key={x}>
                 {x}
               </span>
             ))}
           </div>
           <Button asChild className="mt-9">
-            <Link to="/products">{t.exploreButton}</Link>
+            <Link to="/products">{copy.exploreButton}</Link>
           </Button>
         </div>
       </section>
