@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, BookOpen, Boxes, Landmark } from "lucide-react";
 import { PageHero } from "@/components/page-hero"; 
-import { ProductVisual } from "@/components/product-visual"; 
 import { SectionHeading } from "@/components/section-heading"; 
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/lang";
@@ -68,7 +67,15 @@ function Vity() {
         eyebrow={t.heroEyebrow} 
         title={t.heroTitle} 
         text={t.heroText} 
-        aside={<ProductVisual name="VITY" accent="blue" image="/vity-hero-d3-selen.jpg" large />}
+        aside={
+          <div className="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-teal/10 via-background to-blue-500/10 p-2 shadow-sm">
+            <img 
+              src="/vity-hero-d3-selen.jpg" 
+              alt="VITY Hero Visual" 
+              className="h-auto w-full rounded-xl object-cover"
+            />
+          </div>
+        }
       />
       <section className="section-pad">
         <div className="section-shell">
@@ -76,7 +83,7 @@ function Vity() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {t.cards.map(([title, text], i) => { 
               const icons = [Landmark, BadgeCheck, BookOpen, Boxes];
-              const Icon = icons[i];
+              const Icon = icons[i]!;
               return (
                 <article className="rounded-lg border p-6" key={title}>
                   <Icon className="size-6 text-teal" />
