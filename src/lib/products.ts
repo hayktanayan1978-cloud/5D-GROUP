@@ -1,57 +1,66 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { BadgeCheck, BookOpen, Boxes, Landmark } from "lucide-react";
-import { PageHero } from "@/components/page-hero"; import { ProductVisual } from "@/components/product-visual"; import { SectionHeading } from "@/components/section-heading"; import { Button } from "@/components/ui/button";
-import { useLang } from "@/lib/lang";
-import vityHeroD3SelenAsset from "@/assets/vity-hero-d3-selen.jpg.asset.json";
-export const Route=createFileRoute("/vity")({head:()=>({meta:[{title:"VITY Vitamins & Supplements — Exclusive EAEU Brand"},{name:"description",content:"Discover VITY, the British vitamins and supplements brand represented exclusively by 5D Group across the EAEU."},{property:"og:title",content:"VITY — Exclusive Brand Across the EAEU"},{property:"og:description",content:"British vitamins and supplements for professional EAEU distribution."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Vity});
+export interface Product {
+  slug: string;
+  name: string;
+  category: string;
+  brand: string;
+  shortDesc: {
+    en: string;
+    ru: string;
+  };
+  fullDesc: {
+    en: string;
+    ru: string;
+  };
+  features: {
+    en: string[];
+    ru: string[];
+  };
+}
 
-const icons = [Landmark, BadgeCheck, BookOpen, Boxes];
-
-const copy = {
-  en: {
-    heroEyebrow: "Exclusive brand",
-    heroTitle: "VITY Vitamins & Supplements",
-    heroText: "British vitamins and supplements, exclusively represented and distributed by 5D Group throughout the EAEU.",
-    whyEyebrow: "Why VITY",
-    whyTitle: "A professional portfolio with a British identity",
-    cards: [
-      ["British Standards", "Positioned as a British vitamins and supplements brand."],
-      ["Quality Framework", "The catalog references GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA and EAC."],
-      ["Professional B2B Focus", "An official B2B catalog supports professional commercial partnerships."],
-      ["Broad Portfolio", "Vitamins, multivitamins, probiotics, specialty supplements and minerals."],
-    ],
-    standardsEyebrow: "Quality & Standards",
-    standardsTitle: "Catalog-stated compliance framework",
-    standardsText: "The official VITY B2B catalog references the following standards and institutions. This presentation does not claim certifications beyond the catalog wording.",
-    standards: ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"],
-    exploreButton: "Explore products",
+export const products: Product[] = [
+  {
+    slug: "vity-d3-5000",
+    name: "VITY Vitamin D3 5000 IU",
+    category: "Vitamins",
+    brand: "VITY",
+    shortDesc: {
+      en: "High-potency Vitamin D3 for bone, muscle, and immune support.",
+      ru: "Высокоэффективный витамин D3 для поддержки костей, мышц и иммунитета."
+    },
+    fullDesc: {
+      en: "Essential daily D3 supplementation formulated to professional standards for optimal bioavailability.",
+      ru: "Ежедневный прием витамина D3, разработанный по профессиональным стандартам для оптимальной усвояемости."
+    },
+    features: {
+      en: ["5000 IU per serving", "Immune system support", "Bone health & density"],
+      ru: ["5000 МЕ в порции", "Поддержка иммунной системы", "Здоровье и прочность костей"]
+    }
   },
-  ru: {
-    heroEyebrow: "Эксклюзивный бренд",
-    heroTitle: "VITY Vitamins & Supplements",
-    heroText: "Британский бренд витаминов и пищевых добавок, эксклюзивным представителем и дистрибьютором которого на территории ЕАЭС является 5D Group.",
-    whyEyebrow: "Почему VITY",
-    whyTitle: "Профессиональный портфель с британской идентичностью",
-    cards: [
-      ["Британское происхождение", "VITY позиционируется как британский бренд витаминов и пищевых добавок."],
-      ["Стандарты качества", "В B2B-каталоге упоминаются GMP, MHRA, BRC, ISO 9001:2008, EFSA, FSA и EAC."],
-      ["Профессиональный B2B-подход", "Официальный B2B-каталог VITY предназначен для делового сотрудничества."],
-      ["Широкий ассортимент", "Витамины, мультивитамины, пробиотики, специализированные БАД и минералы."],
-    ],
-    standardsEyebrow: "Качество и стандарты",
-    standardsTitle: "Система соответствия согласно каталогу",
-    standardsText: "В официальном B2B-каталоге VITY упоминаются следующие стандарты и организации. Это не утверждение о наличии дополнительных сертификатов.",
-    standards: ["GMP", "MHRA", "BRC", "ISO 9001:2008", "EFSA", "FSA", "EAC"],
-    exploreButton: "Смотреть продукцию",
-  },
-} as const;
+  {
+    slug: "vity-selen-100",
+    name: "VITY Selen 100 mcg",
+    category: "Minerals",
+    brand: "VITY",
+    shortDesc: {
+      en: "Essential trace mineral for thyroid health and antioxidant protection.",
+      ru: "Необходимый микроэлемент для здоровья щитовидной железы и антиоксидантной защиты."
+    },
+    fullDesc: {
+      en: "Premium selenium formula supporting cellular defense and metabolic regulation across adult populations.",
+      ru: "Формула селена премиум-класса для клеточной защиты и регуляции обмена веществ."
+    },
+    features: {
+      en: ["100 mcg elemental selenium", "Antioxidant protection", "Thyroid function support"],
+      ru: ["100 мкг элементарного селена", "Антиоксидантная защита", "Поддержка функции щитовидной железы"]
+    }
+  }
+];
 
-function Vity() {
-  const lang = useLang();
-  const t = copy[lang];
-  return <>
-    <PageHero eyebrow={t.heroEyebrow} title={t.heroTitle} text={t.heroText} aside={<ProductVisual name="VITY" accent="blue" image={vityHeroD3SelenAsset.url} large/>}/>
-    <section className="section-pad"><div className="section-shell"><SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle}/><div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">{t.cards.map(([title, text], i) => { const Icon = icons[i] as typeof Landmark; return <article className="rounded-lg border p-6" key={title}><Icon className="size-6 text-teal"/><h3 className="mt-5 font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></article>; })}</div></div></section>
-    <section className="section-pad border-y bg-surface"><div className="section-shell"><SectionHeading eyebrow={t.standardsEyebrow} title={t.standardsTitle} text={t.standardsText}/><div className="mt-10 flex flex-wrap gap-3">{t.standards.map(x=><span className="rounded-md border bg-background px-5 py-4 font-display text-sm font-bold text-primary" key={x}>{x}</span>)}</div><Button asChild className="mt-9"><Link to="/products">{t.exploreButton}</Link></Button></div></section>
-  </>;
+export function localizeProduct(product: Product, lang: "en" | "ru") {
+  return {
+    ...product,
+    shortDesc: product.shortDesc[lang] || product.shortDesc.en,
+    fullDesc: product.fullDesc[lang] || product.fullDesc.en,
+    features: product.features[lang] || product.features.en
+  };
 }
