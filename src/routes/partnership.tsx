@@ -1,3 +1,84 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Building2, Handshake, TrendingUp, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/lang";
-import { createFileRoute, Link } from "@tanstack/react-router"; import { Building2, HeartPulse, ShoppingBag, Store, Truck, Users } from "lucide-react"; import { PageHero } from "@/components/page-hero"; import { Button } from "@/components/ui/button"; import { SectionHeading } from "@/components/section-heading";
-export const Route=createFileRoute("/partnership")({head:()=>({meta:[{title:"B2B Partnership — 5D Group & VITY"},{name:"description",content:"Partner with 5D Group for professional VITY distribution across the EAEU."},{property:"og:title",content:"Partner with 5D Group"},{property:"og:description",content:"Long-term VITY cooperation for pharmacy chains, distributors, marketplaces and professional partners."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Partnership});function Partnership(){const lang=useLang(); const ru=lang === "ru";const types=[[Store,ru ? "Аптечные сети" : "Pharmacy chains"],[Truck,ru ? "Фармацевтические дистрибьюторы" : "Pharmaceutical distributors"],[HeartPulse,ru ? "Компании сферы здравоохранения" : "Healthcare companies"],[ShoppingBag,ru ? "Маркетплейсы" : "Marketplaces"],[Building2,ru ? "Розничные партнеры" : "Retail partners"],[Users,ru ? "Профессиональные B2B-клиенты" : "Professional B2B customers"]];return <><PageHero eyebrow={ru ? "B2B-партнерство" : "B2B partnership"} title={ru ? "Станьте партнером 5D Group" : "Partner with 5D Group"} text={ru ? "Мы открыты к долгосрочному сотрудничеству с организациями, готовыми к ответственному продвижению VITY на рынках ЕАЭС." : "We are open to long-term cooperation with organizations positioned to develop VITY responsibly across EAEU markets."}/><section className="section-pad"><div className="section-shell"><SectionHeading eyebrow={ru ? "С кем мы сотрудничаем" : "Who we work with"} title={ru ? "Профессиональные каналы. Долгосрочное сотрудничество." : "Professional channels. Long-term cooperation."} text={ru ? "Согласно каталогу VITY, бренд открыт к сотрудничеству с аптечными сетями, дистрибьюторскими компаниями и маркетплейсами. Для партнеров предусмотрены гибкие коммерческие условия и маркетинговые материалы." : "The VITY catalog states an openness to pharmacy chains, distribution companies and marketplaces, with flexible commercial conditions and marketing materials."}/><div className="mt-10 grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2 lg:grid-cols-3">{types.map(([I,t])=>{const Icon=I as typeof Store;return <div className="flex items-center gap-4 bg-card p-6" key={t as string}><span className="grid size-11 place-items-center rounded-md bg-accent"><Icon className="size-5 text-primary"/></span><p className="font-semibold">{t as string}</p></div>})}</div><div className="mt-10 flex flex-wrap gap-3"><Button asChild size="lg"><Link to="/contact">{ru ? "Стать партнером VITY" : "Become a VITY Partner"}</Link></Button><Button asChild size="lg" variant="outline"><Link to="/contact">{ru ? "Запросить каталог продукции" : "Request Product Catalog"}</Link></Button></div></div></section></>}
+
+export const Route = createFileRoute("/partnership")({
+  component: PartnershipComponent,
+});
+
+function PartnershipComponent() {
+  const lang = useLang();
+  const isRu = lang === "ru";
+
+  const t = {
+    badge: isRu ? "B2B ПАРТНЕРСТВО" : "B2B PARTNERSHIP",
+    title: isRu ? "Надежное партнерство для производителей и аптечных сетей" : "Strategic Partnership for Manufacturers & Retail Networks",
+    desc: isRu 
+      ? "Мы предлагаем выгодные коммерческие условия для аптечных сетей, дистрибьюторов и контрактных производителей."
+      : "We offer attractive commercial terms for pharmacy chains, regional distributors, and contract manufacturing partners.",
+    btn: isRu ? "Отправить запрос" : "Send Inquiry",
+    cards: [
+      {
+        icon: Handshake,
+        title: isRu ? "Эксклюзивные Права" : "Exclusive Distribution",
+        desc: isRu ? "Защищенная территория и долгосрочные контракты." : "Territory protection and structured long-term agreements."
+      },
+      {
+        icon: TrendingUp,
+        title: isRu ? "Маркетинговая Поддержка" : "Commercial Support",
+        desc: isRu ? "POS-материалы, обучение персонала и рекламные акции." : "POS materials, staff training, and promotional campaigns."
+      },
+      {
+        icon: Building2,
+        title: isRu ? "Гибкие Условия" : "Flexible Terms",
+        desc: isRu ? "Индивидуальные графики поставок и финансовые условия." : "Tailored delivery schedules and transparent credit terms."
+      },
+      {
+        icon: Award,
+        title: isRu ? "Премиальный Портфель" : "Premium Portfolio",
+        desc: isRu ? "Европейское качество с высокой маржинальностью." : "High-margin European quality formulations."
+      }
+    ]
+  };
+
+  return (
+    <div className="section-shell py-12 md:py-20">
+      <div className="max-w-3xl">
+        <span className="text-xs font-bold uppercase tracking-wider text-teal">
+          {t.badge}
+        </span>
+        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          {t.title}
+        </h1>
+        <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
+          {t.desc}
+        </p>
+        <div className="mt-8">
+          <Button asChild size="lg" className="bg-[#005587] hover:bg-[#004066]">
+            <Link to="/contact">{t.btn}</Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {t.cards.map((item, idx) => {
+          const Icon = item.icon;
+          return (
+            <div key={idx} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all">
+              <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
+                <Icon className="size-5" />
+              </div>
+              <h3 className="mt-4 font-display text-base font-bold text-slate-900">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
