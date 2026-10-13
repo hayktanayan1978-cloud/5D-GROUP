@@ -14,21 +14,15 @@ function HomeComponent() {
   const t = {
     badge: isRu ? "Эксклюзивный партнер VITY в ЕАЭС" : "Exclusive VITY partner across the EAEU",
     smallLabel: isRu ? "5D GROUP · ФАРМАЦЕВТИЧЕСКАЯ И НУТРИЦЕВТИЧЕСКАЯ ДИСТРИБУЦИЯ" : "5D GROUP · PHARMACEUTICAL & NUTRACEUTICAL DISTRIBUTION",
-    title: isRu 
-      ? "Связываем надежные бренды пищевых добавок с рынком ЕАЭС." 
-      : "Connecting trusted supplement brands with the EAEU market.",
-    desc: isRu 
-      ? "Эксклюзивное представительство и дистрибуция витаминов и комплексов VITY из Великобритании на территории ЕАЭС." 
-      : "Exclusive EAEU representation and distribution of VITY Vitamins & Supplements from the United Kingdom.",
+    title: isRu ? "Связываем надежные бренды пищевых добавок с рынком ЕАЭС." : "Connecting trusted supplement brands with the EAEU market.",
+    desc: isRu ? "Эксклюзивное представительство и дистрибуция витаминов и комплексов VITY из Великобритании на территории ЕАЭС." : "Exclusive EAEU representation and distribution of VITY Vitamins & Supplements from the United Kingdom.",
     btnCatalog: isRu ? "Каталог продукции VITY ↗" : "Explore Products ↗",
     btnPartner: isRu ? "Стать партнером" : "B2B Partnership",
-    standLabelLine1: isRu ? "ВЕЛИКОБРИТАНИЯ — ЕАЭС" : "UK — EAEU",
-    standLabelLine2: isRu ? "Профессиональная B2B дистрибуция" : "Professional B2B distribution",
+    standLabel1: isRu ? "ВЕЛИКОБРИТАНИЯ — ЕАЭС" : "UK — EAEU",
+    standLabel2: isRu ? "Профессиональная B2B дистрибуция" : "Professional B2B distribution",
     secBadge: isRu ? "О КОМПАНИИ 5D GROUP" : "ABOUT 5D GROUP",
     secTitle: isRu ? "Надежный партнер для регулируемых и профессиональных рынков" : "Trusted Partner for Regulated & Professional Markets",
-    secDesc: isRu
-      ? "Мы работаем с фармацевтическими дистрибьюторами, аптечными сетями, маркетплейсами и другими профессиональными партнерами. Как эксклюзивный представитель VITY Vitamins & Supplements на территории ЕАЭС, наша задача — развитие бренда через чёткое позиционирование и дисциплинированное B2B-сотрудничество."
-      : "We partner with pharmaceutical distributors, pharmacy chains, marketplaces, and other professional channels. As the exclusive representative of VITY Vitamins & Supplements in the EAEU, our focus is on brand development through precise positioning and disciplined B2B collaboration.",
+    secDesc: isRu ? "Мы работаем с фармацевтическими дистрибьюторами, аптечными сетями, маркетплейсами и другими профессиональными партнерами. Как эксклюзивный представитель VITY Vitamins & Supplements на территории ЕАЭС, наша задача — развитие бренда через чёткое позиционирование и дисциплинированное B2B-сотрудничество." : "We partner with pharmaceutical distributors, pharmacy chains, marketplaces, and other professional channels. As the exclusive representative of VITY Vitamins & Supplements in the EAEU, our focus is on brand development through precise positioning and disciplined B2B collaboration.",
     cards: [
       {
         icon: Globe,
@@ -55,22 +49,9 @@ function HomeComponent() {
 
   return (
     <div className="relative min-h-screen bg-background">
-      {/* Hero Section with Grid Pattern and Background Overlay */}
       <section className="relative overflow-hidden border-b border-slate-200/60 py-16 md:py-24 lg:py-28">
-        {/* Background Image Layer */}
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25 mix-blend-multiply"
-          style={{ backgroundImage: `url('/vity-hero-d3-selen.jpg')` }}
-        />
-        
-        {/* Subtle Grid Pattern Overlay */}
-        <div 
-          className="absolute inset-0 z-0 opacity-40"
-          style={{
-            backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
-            backgroundSize: `40px 40px`
-          }}
-        />
+        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20 mix-blend-multiply" style={{ backgroundImage: `url('/vity-hero-d3-selen.jpg')` }} />
+        <div className="absolute inset-0 z-0 opacity-40" style={{ backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`, backgroundSize: `40px 40px` }} />
 
         <div className="section-shell relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -102,17 +83,12 @@ function HomeComponent() {
               </div>
             </div>
 
-            {/* Product Display Stand */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-xl backdrop-blur-md">
-                <img 
-                  src="/vity-lineup.png" 
-                  alt="VITY Products Display" 
-                  className="w-full object-contain rounded-xl"
-                />
+                <img src="/vity-lineup.png" alt="VITY Products Display" className="w-full object-contain rounded-xl" />
                 <div className="mt-3 border-t border-slate-100 pt-3 text-right">
                   <p className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wider">
-                    {t.standLabelLine1}<br />{t.standLabelLine2}
+                    {t.standLabel1}<br />{t.standLabel2}
                   </p>
                 </div>
               </div>
@@ -121,7 +97,6 @@ function HomeComponent() {
         </div>
       </section>
 
-      {/* Info & Company Profile Section */}
       <section className="bg-white py-16">
         <div className="section-shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
@@ -140,9 +115,26 @@ function HomeComponent() {
             </div>
           </div>
 
-          {/* 4 Cards */}
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.cards.map((card, idx) => {
               const Icon = card.icon;
               return (
-                <div key
+                <div key={idx} className="rounded-xl border border-slate-200/80 bg-slate-50/50 p-6 transition-all hover:shadow-md hover:bg-white">
+                  <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
+                    <Icon className="size-5" />
+                  </div>
+                  <h3 className="mt-4 font-display text-base font-bold text-slate-900">
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
