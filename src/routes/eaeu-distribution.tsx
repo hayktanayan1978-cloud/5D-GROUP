@@ -1,3 +1,84 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Truck, ShieldCheck, FileText, Network } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/lang";
-import { createFileRoute, Link } from "@tanstack/react-router"; import { ArrowDown, ArrowRight, MapPin } from "lucide-react"; import { PageHero } from "@/components/page-hero"; import { Button } from "@/components/ui/button"; import { SectionHeading } from "@/components/section-heading";
-export const Route=createFileRoute("/eaeu-distribution")({head:()=>({meta:[{title:"VITY Distribution Across the EAEU — 5D Group"},{name:"description",content:"5D Group exclusively represents VITY across Armenia, Belarus, Kazakhstan, Kyrgyzstan and Russia."},{property:"og:title",content:"VITY Distribution Across the EAEU"},{property:"og:description",content:"A professional route from the United Kingdom through 5D Group to EAEU partners."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Eaeu});function Eaeu(){const lang=useLang(); const ru=lang === "ru";const markets=ru ? ["Армения","Беларусь","Казахстан","Кыргызстан","Россия"] : ["Armenia","Belarus","Kazakhstan","Kyrgyzstan","Russia"];return <><PageHero eyebrow={ru ? "Развитие рынка" : "Market development"} title={ru ? "Дистрибуция VITY на территории ЕАЭС" : "VITY distribution across the EAEU"} text={ru ? "5D Group — эксклюзивный представитель и дистрибьютор VITY Vitamins & Supplements на территории Евразийского экономического союза." : "5D Group is the exclusive representative and distribution partner for VITY Vitamins & Supplements throughout the Eurasian Economic Union."}/><section className="section-pad"><div className="section-shell"><SectionHeading eyebrow={ru ? "Схема дистрибуции" : "Distribution flow"} title={ru ? "От британского бренда к партнерам в ЕАЭС" : "From a British brand to EAEU partners"}/><div className="mt-12 grid items-center gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr]"><div className="rounded-lg border bg-surface p-8 text-center"><p className="eyebrow">{ru ? "Страна происхождения" : "Origin"}</p><h3 className="mt-3 text-2xl font-semibold">{ru ? "Великобритания" : "United Kingdom"}</h3><p className="mt-2 text-sm text-muted-foreground">VITY Vitamins & Supplements</p></div><ArrowRight className="mx-auto hidden text-primary md:block"/><ArrowDown className="mx-auto text-primary md:hidden"/><div className="rounded-lg bg-primary p-8 text-center text-primary-foreground"><p className="text-xs font-bold uppercase tracking-[0.12em] opacity-70">{ru ? "Эксклюзивный партнер" : "Exclusive partner"}</p><h3 className="mt-3 text-2xl font-semibold">5D Group</h3><p className="mt-2 text-sm opacity-75">{ru ? "Представительство и дистрибуция" : "Representation & distribution"}</p></div><ArrowRight className="mx-auto hidden text-primary md:block"/><ArrowDown className="mx-auto text-primary md:hidden"/><div className="rounded-lg border bg-surface p-8 text-center"><p className="eyebrow">{ru ? "Целевой рынок" : "Destination"}</p><h3 className="mt-3 text-2xl font-semibold">{ru ? "Рынок ЕАЭС" : "EAEU Market"}</h3><p className="mt-2 text-sm text-muted-foreground">{ru ? "Профессиональные партнеры" : "Professional partners"}</p></div></div></div></section><section className="section-pad border-y bg-surface"><div className="section-shell"><SectionHeading eyebrow={ru ? "География присутствия" : "Geographic coverage"} title={ru ? "Пять рынков стран ЕАЭС" : "Five EAEU member markets"} text={ru ? "Рынки, на которых 5D Group обеспечивает эксклюзивное представительство VITY и развивает деловое сотрудничество." : "A business-focused view of the markets covered by 5D Group's exclusive VITY representation."}/><div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">{markets.map((m,i)=><div className="rounded-lg border bg-background p-5" key={m}><MapPin className="size-5 text-teal"/><p className="mt-5 font-semibold">{m}</p><p className="mt-1 text-xs text-muted-foreground">{ru ? "Рынок" : "Market"} 0{i+1}</p></div>)}</div><Button asChild className="mt-10"><Link to="/partnership">{ru ? "Обсудить партнерство на рынке" : "Discuss market partnership"}</Link></Button></div></section></>}
+
+export const Route = createFileRoute("/eaeu-distribution")({
+  component: EAEUDistributionComponent,
+});
+
+function EAEUDistributionComponent() {
+  const lang = useLang();
+  const isRu = lang === "ru";
+
+  const t = {
+    badge: isRu ? "ДИСТРИБУЦИЯ В ЕАЭС" : "EAEU DISTRIBUTION",
+    title: isRu ? "Эффективная логистика и регулирование в ЕАЭС" : "Streamlined EAEU Logistics & Regulatory Access",
+    desc: isRu 
+      ? "5D Group обеспечивает полный цикл импорта, госрегистрации (СГР) и дистрибуции БАД на территории Армении, России, Беларуси, Казахстана и Киргизии."
+      : "5D Group provides complete import, state registration (SGR), and distribution services across Armenia, Russia, Belarus, Kazakhstan, and Kyrgyzstan.",
+    btn: isRu ? "Обсудить сотрудничество" : "Discuss Partnership",
+    cards: [
+      {
+        icon: FileText,
+        title: isRu ? "Регистрация (СГР)" : "Regulatory Support",
+        desc: isRu ? "Подготовка досье և получение Свидетельств о государственной регистрации." : "Full dossier preparation and State Registration Certificate issuance."
+      },
+      {
+        icon: Truck,
+        title: isRu ? "Логистика и Таможня" : "Logistics & Customs",
+        desc: isRu ? "Транспортировка, таможенное оформление и складское хранение." : "Seamless transport, customs clearance, and temperature-controlled storage."
+      },
+      {
+        icon: Network,
+        title: isRu ? "Сеть Дистрибуции" : "Distribution Network",
+        desc: isRu ? "Прямой доступ к аптечным сетям и фармацевтическим дистрибьюторам." : "Direct access to pharmacy chains and major regional distributors."
+      },
+      {
+        icon: ShieldCheck,
+        title: isRu ? "Контроль Качества" : "Compliance & Standards",
+        desc: isRu ? "Полное соответствие техническим регламентам ЕАЭС (ТР ТС 021/2011)." : "Full compliance with EAEU Technical Regulations and quality standards."
+      }
+    ]
+  };
+
+  return (
+    <div className="section-shell py-12 md:py-20">
+      <div className="max-w-3xl">
+        <span className="text-xs font-bold uppercase tracking-wider text-teal">
+          {t.badge}
+        </span>
+        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          {t.title}
+        </h1>
+        <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
+          {t.desc}
+        </p>
+        <div className="mt-8">
+          <Button asChild size="lg" className="bg-[#005587] hover:bg-[#004066]">
+            <Link to="/contact">{t.btn}</Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {t.cards.map((item, idx) => {
+          const Icon = item.icon;
+          return (
+            <div key={idx} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all">
+              <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
+                <Icon className="size-5" />
+              </div>
+              <h3 className="mt-4 font-display text-base font-bold text-slate-900">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
