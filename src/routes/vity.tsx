@@ -3,7 +3,6 @@ import { BadgeCheck, BookOpen, Boxes, Landmark } from "lucide-react";
 import { PageHero } from "@/components/page-hero"; 
 import { SectionHeading } from "@/components/section-heading"; 
 import { Button } from "@/components/ui/button";
-import { useLang } from "@/lib/lang";
 
 export const Route = createFileRoute("/vity")({
   head: () => ({
@@ -16,8 +15,7 @@ export const Route = createFileRoute("/vity")({
 });
 
 function Vity() {
-  const lang = useLang();
-  
+  const lang: "en" | "ru" = "en"; 
   const isRu = lang === "ru";
 
   const copy = {
