@@ -20,8 +20,6 @@ export const Route = createFileRoute("/vity")({
   component: Vity
 });
 
-const icons = [Landmark, BadgeCheck, BookOpen, Boxes];
-
 const copy = {
   en: {
     heroEyebrow: "Exclusive brand",
@@ -75,4 +73,36 @@ function Vity() {
       <section className="section-pad">
         <div className="section-shell">
           <SectionHeading eyebrow={t.whyEyebrow} title={t.whyTitle} />
-          <div className
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {t.cards.map(([title, text], i) => { 
+              const icons = [Landmark, BadgeCheck, BookOpen, Boxes];
+              const Icon = icons[i];
+              return (
+                <article className="rounded-lg border p-6" key={title}>
+                  <Icon className="size-6 text-teal" />
+                  <h3 className="mt-5 font-semibold">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
+                </article>
+              ); 
+            })}
+          </div>
+        </div>
+      </section>
+      <section className="section-pad border-y bg-surface">
+        <div className="section-shell">
+          <SectionHeading eyebrow={t.standardsEyebrow} title={t.standardsTitle} text={t.standardsText} />
+          <div className="mt-10 flex flex-wrap gap-3">
+            {t.standards.map((x) => (
+              <span className="rounded-md border bg-background px-5 py-4 font-display text-sm font-bold text-primary" key={x}>
+                {x}
+              </span>
+            ))}
+          </div>
+          <Button asChild className="mt-9">
+            <Link to="/products">{t.exploreButton}</Link>
+          </Button>
+        </div>
+      </section>
+    </>
+  );
+}
