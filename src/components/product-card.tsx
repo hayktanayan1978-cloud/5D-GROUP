@@ -1,19 +1,60 @@
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import type { Product } from "@/lib/products";
 import { ProductVisual } from "@/components/product-visual";
+import { Badge } from "@/components/ui/badge";
+import { localizeProduct, type Product } from "@/lib/products";
+import { useLang } from "@/lib/lang";
 
-export function ProductCard({ product }: { product: Product }) {
+interface ProductCardProps {
+  product: Product;
+}
+
+export function ProductCard({ product }: ProductCardProps) {
+  const lang = useLang();
+  const localized = localizeProduct(product, lang);
+
+  if (!localized) return null;
+
+  // Safe checks for arrays to prevent .slice() errors on undefined properties
+  const rawFeatures = localized.features || (product as any)?.features || [];
+  const safeFeatures = Array.isArray(rawFeatures) ? rawFeatures : [];
+
   return (
-    <article className="group overflow-hidden rounded-lg border border-border bg-card transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_-35px_color-mix(in_oklab,var(--primary)_42%,transparent)]">
-      <ProductVisual name={product.name} accent={product.accent} image={product.image} />
-      <div className="p-5">
-        <p className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-primary">{product.type}</p>
-        <h3 className="min-h-14 text-xl font-semibold leading-snug text-foreground">{product.name}</h3>
-        <p className="mt-3 min-h-10 text-sm leading-6 text-muted-foreground">{product.formulation ?? product.ingredients.slice(0, 3).join(" · ")}</p>
-        {product.code && <p className="mt-4 font-mono text-xs text-muted-foreground">{product.code}</p>}
-        <Link to="/products/$slug" params={{ slug: product.slug }} className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-teal">
-          Product Details <ArrowUpRight className="size-4" />
+    <article className="group relative flex flex-col justify-between overflow-hidden rounded-xl border bg-card p-5 transition-all hover:shadow-md">
+      <div>
+        <div className="mb-4 aspect-square overflow-hidden rounded-lg bg-surface">
+          <ProductVisual name={product.name} />
+        </div>
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-xs font-semibold uppercase tracking-wider text-teal">
+            {product.brand}
+          </span>
+          <Badge variant="outline">{product.category}</Badge>
+        </div>
+        <h3 className="font-display text-lg font-bold text-foreground group-hover:text-teal">
+          {product.name}
+        </h3>
+        <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+          {localized.shortDesc}
+        </p>
+        
+        {safeFeatures.length > 0 && (
+          <ul className="mt-4 space-y-1">
+            {safeFeatures.slice(0, 3).map((feat: string, i: number) => (
+              <li key={i} className="text-xs text-muted-foreground">
+                • {feat}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="mt-6">
+        <Link
+          to="/products/$slug"
+          params={{ slug: product.slug }}
+          className="inline-flex w-full items-center justify-center rounded-lg bg-secondary py-2 text-xs font-semibold text-secondary-foreground transition-colors hover:bg-teal hover:text-white"
+        >
+          {lang === "ru" ? "Подробнее" : "View details"}
         </Link>
       </div>
     </article>
