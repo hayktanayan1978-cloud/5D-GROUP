@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useLang } from "@/lib/lang";
 
 export const Route = createFileRoute("/contact")({
@@ -17,7 +17,6 @@ function ContactComponent() {
       ? "По вопросам дистрибуции, коммерческих поставок и B2B партнерства."
       : "For distribution inquiries, commercial supply agreements, and B2B partnership opportunities.",
     emailLabel: isRu ? "Эл. почта:" : "Email:",
-    phoneLabel: isRu ? "Телефон:" : "Phone:",
     addressLabel: isRu ? "Адрес:" : "Address:",
     addressVal: isRu ? "Ереван, Армения / ЕАЭС" : "Yerevan, Armenia / EAEU",
     formTitle: isRu ? "Форма обратной связи" : "Partner Inquiry Form",
