@@ -72,7 +72,11 @@ export const products: Product[] = [
     category: "Multi-VITY — Multivitamins",
     type: "Multivitamins",
     formulation: "Multi-VITY MEN Multivitamins 23 vital nutrients",
-    ingredients: ["Magnesium", "Zinc", "Selenium", "Vitamin D3", "Vitamin B6", "Vitamin B12", "Vitamin C", "Vitamin E", "Vitamin K", "Iron", "Copper", "Chromium"],
+    ingredients: [
+      "Magnesium", "Zinc", "Selenium", "Vitamin D3", "Vitamin B6",
+      "Vitamin B12", "Vitamin C", "Vitamin E", "Vitamin K", "Iron",
+      "Copper", "Chromium"
+    ],
     format: "Tablets",
     purpose: "Specialized formula intended to support energy levels, muscle function and heart health.",
     accent: "blue",
@@ -84,7 +88,11 @@ export const products: Product[] = [
     category: "Multi-VITY — Multivitamins",
     type: "Multivitamins",
     formulation: "Multi-VITY WOMEN Multivitamins 23 vital nutrients",
-    ingredients: ["Iron", "Folic Acid (Vitamin B9)", "Biotin", "Zinc", "Vitamin D", "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12", "Calcium", "Iodine"],
+    ingredients: [
+      "Iron", "Folic Acid (Vitamin B9)", "Biotin", "Zinc", "Vitamin D",
+      "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12",
+      "Calcium", "Iodine"
+    ],
     format: "Tablets",
     purpose: "Specialized formula intended to support hair, skin, nails and digestion.",
     accent: "coral",
@@ -96,7 +104,11 @@ export const products: Product[] = [
     category: "Multi-VITY — Multivitamins",
     type: "Multivitamins",
     formulation: "Multi-VITY KIDS Multivitamins",
-    ingredients: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin B1", "Vitamin B2", "Vitamin B3", "Vitamin B6", "Folic Acid (Vitamin B9)", "Vitamin B12", "Pantothenic Acid", "Iodine", "Iron", "Zinc"],
+    ingredients: [
+      "Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin B1",
+      "Vitamin B2", "Vitamin B3", "Vitamin B6", "Folic Acid (Vitamin B9)",
+      "Vitamin B12", "Pantothenic Acid", "Iodine", "Iron", "Zinc"
+    ],
     format: "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties",
     purpose: "Intended to support children's immunity, normal bone development and energy.",
     accent: "amber",
@@ -120,7 +132,10 @@ export const products: Product[] = [
     category: "Immunity, Nervous System & Microflora",
     type: "Probiotics",
     formulation: "PROBIOTIV VITY \n6 billion live bacteria",
-    ingredients: ["L. Bulgaricus", "L. Acidophilus", "L. Helveticus", "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"],
+    ingredients: [
+      "L. Bulgaricus", "L. Acidophilus", "L. Helveticus",
+      "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"
+    ],
     code: "PRO-BIO-6B",
     accent: "teal",
     image: "/vity-probiotic.png"
@@ -185,10 +200,10 @@ export const products: Product[] = [
 ];
 
 export const categories = [
-  { slug: "d-vity", name: "D-VITY", subtitle: "Vitamin D3", description: "Four precisely identified Vitamin D3 formulations for adults and children." },
-  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes for men, women and children from the official catalog." },
-  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Vitamin C, probiotics, selenium and B-complex products." },
-  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations using exact available catalog information." }
+  { slug: "d-vity", name: "D-VITY", subtitle: "Vitamin D3", description: "Four Vitamin D3 formulations." },
+  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes for men, women and children." },
+  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Vitamin C, probiotics, selenium and B-complex." },
+  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations." }
 ];
 
 export function getProduct(slug: string) { 
@@ -224,6 +239,14 @@ const russianCatalogText: Record<string, string> = {
   "Tablets": "Таблетки",
   "Chewable · Natural raspberry flavor": "Жевательные таблетки · натуральный вкус малины",
   "Orange flavor": "Апельсиновый вкус",
-  "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties": "Жевательные таблетки для детей от 3 лет · фруктовый вкус, 4 разновидности витаминов",
+  "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties": "Жевательные таблетки для детей от 3 лет · фруктовый вкус",
   "For children from 3 years": "Для детей от 3 лет",
-  "Specialized formula intended to support energy levels, muscle function and heart health.": "Специализированная формула для поддержки энергии
+  "Specialized formula intended to support energy levels, muscle function and heart health.": 
+    "Специализированная формула для поддержки энергии, работы мышц и здоровья сердца.",
+  "Specialized formula intended to support hair, skin, nails and digestion.": 
+    "Специализированная формула для поддержки здоровья волос, кожи, ногтей и пищеварения.",
+  "Intended to support children's immunity, normal bone development and energy.": 
+    "Предназначен для поддержки иммунитета детей, нормального развития костей и энергии.",
+  "High bioavailability; positioned for stress management and thyroid support.": 
+    "Высокая биодоступность; позиционируется для поддержки при стрессе и функции щитовидной железы.",
+  "Positioned for nervous system and metabolism support.
