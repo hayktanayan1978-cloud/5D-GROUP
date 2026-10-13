@@ -14,7 +14,7 @@ function HomeComponent() {
   const t = {
     badge: isRu ? "Эксклюзивный партнер VITY в ЕАЭС" : "Exclusive VITY partner across the EAEU",
     smallLabel: isRu ? "5D GROUP · ФАРМАЦЕВТИЧЕСКАЯ И НУТРИЦЕВТИЧЕСКАЯ ДИСТРИБУЦИЯ" : "5D GROUP · PHARMACEUTICAL & NUTRACEUTICAL DISTRIBUTION",
-    title: isRu ? "Связываем надежные бренды пищевых добавок с рынком ЕАЭС." : "Connecting trusted supplement brands with the EAEU market.",
+    title: isRu ? "Связываем\nнадежные\nбренды пищевых\nдобавок с\nрынком ЕАЭС." : "Connecting\ntrusted\nsupplement brands\nwith the\nEAEU market.",
     desc: isRu ? "Эксклюзивное представительство и дистрибуция витаминов и комплексов VITY из Великобритании на территории ЕАЭС." : "Exclusive EAEU representation and distribution of VITY Vitamins & Supplements from the United Kingdom.",
     btnCatalog: isRu ? "Каталог продукции VITY ↗" : "Explore Products ↗",
     btnPartner: isRu ? "Стать партнером" : "B2B Partnership",
@@ -49,9 +49,16 @@ function HomeComponent() {
 
   return (
     <div className="relative min-h-screen bg-background">
-      <section className="relative overflow-hidden border-b border-slate-200/60 py-16 md:py-24 lg:py-28">
-        <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20 mix-blend-multiply" style={{ backgroundImage: `url('/vity-hero-d3-selen.jpg')` }} />
-        <div className="absolute inset-0 z-0 opacity-40" style={{ backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`, backgroundSize: `40px 40px` }} />
+      {/* Exact Laboratory Background Hero Section */}
+      <section className="relative overflow-hidden border-b border-slate-200/60 py-20 md:py-28 lg:py-36">
+        {/* Background Laboratory Image */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-90"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1581093458791-9f3c3250a8b0?auto=format&fit=crop&w=2000&q=80')` }}
+        />
+        
+        {/* White Brightness Overlay for Readable Text */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
 
         <div className="section-shell relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -65,7 +72,7 @@ function HomeComponent() {
                 {t.smallLabel}
               </div>
 
-              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12]">
+              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.12] whitespace-pre-line">
                 {t.title}
               </h1>
 
@@ -77,12 +84,13 @@ function HomeComponent() {
                 <Button asChild size="lg" className="bg-[#005587] hover:bg-[#004066] text-white shadow-sm">
                   <Link to="/products">{t.btnCatalog}</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-slate-300 bg-white/80 backdrop-blur-sm">
+                <Button asChild variant="outline" size="lg" className="border-slate-300 bg-white/90 backdrop-blur-sm">
                   <Link to="/partnership">{t.btnPartner}</Link>
                 </Button>
               </div>
             </div>
 
+            {/* Product Display Stand */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-xl backdrop-blur-md">
                 <img src="/vity-lineup.png" alt="VITY Products Display" className="w-full object-contain rounded-xl" />
@@ -97,6 +105,7 @@ function HomeComponent() {
         </div>
       </section>
 
+      {/* Info & Company Profile Section */}
       <section className="bg-white py-16">
         <div className="section-shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
