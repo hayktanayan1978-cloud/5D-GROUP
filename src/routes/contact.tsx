@@ -1,3 +1,104 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { useLang } from "@/lib/lang";
-import { createFileRoute } from "@tanstack/react-router"; import { Mail, PackageSearch, Handshake } from "lucide-react"; import { PageHero } from "@/components/page-hero"; import { InquiryForm } from "@/components/inquiry-form"; import { SectionHeading } from "@/components/section-heading";
-export const Route=createFileRoute("/contact")({head:()=>({meta:[{title:"Contact 5D Group — VITY EAEU Inquiries"},{name:"description",content:"Contact 5D Group about B2B cooperation, VITY distribution and product information."},{property:"og:title",content:"Contact 5D Group"},{property:"og:description",content:"Start a professional VITY distribution or product conversation."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Contact});function Contact(){const lang=useLang(); const ru=lang === "ru";return <><PageHero eyebrow={ru ? "Деловые запросы" : "Business inquiries"} title={ru ? "Свяжитесь с 5D Group" : "Start a conversation with 5D Group"} text={ru ? "Для обсуждения B2B-сотрудничества, дистрибуции VITY и получения информации о продукции на территории ЕАЭС." : "For B2B cooperation, VITY distribution and product information across the EAEU."}/><section className="section-pad"><div className="section-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr]"><div><SectionHeading eyebrow={ru ? "Контакты" : "Contact"} title={ru ? "Запросы о сотрудничестве" : "Professional inquiries"}/><a href="mailto:5dgrouppharma@gmail.com" className="mt-7 flex items-center gap-3 font-semibold text-primary"><Mail className="size-5"/>5dgrouppharma@gmail.com</a><div className="mt-10 space-y-4">{[[Handshake,ru ? "B2B-сотрудничество" : "B2B Cooperation"],[PackageSearch,ru ? "Дистрибуция VITY" : "VITY Distribution"],[Mail,ru ? "Информация о продукции" : "Product Information"]].map(([I,t])=>{const Icon=I as typeof Mail;return <div className="flex items-center gap-3 text-sm font-semibold" key={t as string}><Icon className="size-4 text-teal"/>{t as string}</div>})}</div></div><InquiryForm/></div></section></>}
+
+export const Route = createFileRoute("/contact")({
+  component: ContactComponent,
+});
+
+function ContactComponent() {
+  const lang = useLang();
+  const isRu = lang === "ru";
+
+  const t = {
+    badge: isRu ? "КОНТАКТЫ" : "CONTACT US",
+    title: isRu ? "Свяжитесь с нами" : "Get in Touch",
+    desc: isRu 
+      ? "По вопросам дистрибуции, коммерческих поставок и B2B партнерства."
+      : "For distribution inquiries, commercial supply agreements, and B2B partnership opportunities.",
+    emailLabel: isRu ? "Эл. почта:" : "Email:",
+    phoneLabel: isRu ? "Телефон:" : "Phone:",
+    addressLabel: isRu ? "Адрес:" : "Address:",
+    addressVal: isRu ? "Ереван, Армения / ЕАЭС" : "Yerevan, Armenia / EAEU",
+    formTitle: isRu ? "Форма обратной связи" : "Partner Inquiry Form",
+    namePlaceholder: isRu ? "Ваше имя" : "Your Name",
+    emailPlaceholder: isRu ? "Ваш Email" : "Your Email",
+    msgPlaceholder: isRu ? "Сообщение или детали запроса..." : "Message or inquiry details...",
+    submitBtn: isRu ? "Отправить сообщение" : "Send Message"
+  };
+
+  return (
+    <div className="section-shell py-12 md:py-20">
+      <div className="grid gap-12 lg:grid-cols-2">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-wider text-teal">
+            {t.badge}
+          </span>
+          <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            {t.title}
+          </h1>
+          <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            {t.desc}
+          </p>
+
+          <div className="mt-8 space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
+                <Mail className="size-5" />
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-slate-400">{t.emailLabel}</div>
+                <a href="mailto:5dgrouppharma@gmail.com" className="text-sm font-bold text-[#005587] hover:underline">
+                  5dgrouppharma@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="grid size-10 place-items-center rounded-lg bg-teal/10 text-teal">
+                <MapPin className="size-5" />
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-slate-400">{t.addressLabel}</div>
+                <div className="text-sm font-bold text-slate-800">{t.addressVal}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h2 className="font-display text-xl font-bold text-slate-900">{t.formTitle}</h2>
+          <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <input 
+                type="text" 
+                placeholder={t.namePlaceholder} 
+                className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-[#005587] focus:outline-none"
+              />
+            </div>
+            <div>
+              <input 
+                type="email" 
+                placeholder={t.emailPlaceholder} 
+                className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-[#005587] focus:outline-none"
+              />
+            </div>
+            <div>
+              <textarea 
+                rows={4} 
+                placeholder={t.msgPlaceholder} 
+                className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:border-[#005587] focus:outline-none"
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="w-full rounded-lg bg-[#005587] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#004066]"
+            >
+              {t.submitBtn}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
