@@ -72,13 +72,9 @@ export const products: Product[] = [
     category: "Multi-VITY — Multivitamins",
     type: "Multivitamins",
     formulation: "Multi-VITY MEN Multivitamins 23 vital nutrients",
-    ingredients: [
-      "Magnesium", "Zinc", "Selenium", "Vitamin D3", "Vitamin B6",
-      "Vitamin B12", "Vitamin C", "Vitamin E", "Vitamin K", "Iron",
-      "Copper", "Chromium"
-    ],
+    ingredients: ["Magnesium", "Zinc", "Selenium", "Vitamin D3", "Vitamin B6", "Vitamin B12", "Vitamin C", "Vitamin E", "Vitamin K", "Iron", "Copper", "Chromium"],
     format: "Tablets",
-    purpose: "Specialized formula intended to support energy levels, muscle function and heart health.",
+    purpose: "Support energy levels and muscle function.",
     accent: "blue",
     image: "/vity-multi-man.png"
   },
@@ -88,13 +84,9 @@ export const products: Product[] = [
     category: "Multi-VITY — Multivitamins",
     type: "Multivitamins",
     formulation: "Multi-VITY WOMEN Multivitamins 23 vital nutrients",
-    ingredients: [
-      "Iron", "Folic Acid (Vitamin B9)", "Biotin", "Zinc", "Vitamin D",
-      "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12",
-      "Calcium", "Iodine"
-    ],
+    ingredients: ["Iron", "Folic Acid (Vitamin B9)", "Biotin", "Zinc", "Vitamin D", "Vitamin C", "Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12", "Calcium", "Iodine"],
     format: "Tablets",
-    purpose: "Specialized formula intended to support hair, skin, nails and digestion.",
+    purpose: "Support hair, skin, nails and digestion.",
     accent: "coral",
     image: "/vity-multi-woman.png"
   },
@@ -104,13 +96,9 @@ export const products: Product[] = [
     category: "Multi-VITY — Multivitamins",
     type: "Multivitamins",
     formulation: "Multi-VITY KIDS Multivitamins",
-    ingredients: [
-      "Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin B1",
-      "Vitamin B2", "Vitamin B3", "Vitamin B6", "Folic Acid (Vitamin B9)",
-      "Vitamin B12", "Pantothenic Acid", "Iodine", "Iron", "Zinc"
-    ],
-    format: "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties",
-    purpose: "Intended to support children's immunity, normal bone development and energy.",
+    ingredients: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin B1", "Vitamin B2", "Vitamin B3", "Vitamin B6", "Folic Acid (Vitamin B9)", "Vitamin B12", "Pantothenic Acid", "Iodine", "Iron", "Zinc"],
+    format: "Chewable tablets 3+ · Fruit flavor",
+    purpose: "Support children's immunity and development.",
     accent: "amber",
     image: "/vity-multi-kids.png"
   },
@@ -132,10 +120,7 @@ export const products: Product[] = [
     category: "Immunity, Nervous System & Microflora",
     type: "Probiotics",
     formulation: "PROBIOTIV VITY \n6 billion live bacteria",
-    ingredients: [
-      "L. Bulgaricus", "L. Acidophilus", "L. Helveticus",
-      "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"
-    ],
+    ingredients: ["L. Bulgaricus", "L. Acidophilus", "L. Helveticus", "S. Thermophilus", "B. Bifidum", "Prebiotics", "Vitamin C"],
     code: "PRO-BIO-6B",
     accent: "teal",
     image: "/vity-probiotic.png"
@@ -146,7 +131,7 @@ export const products: Product[] = [
     category: "Immunity, Nervous System & Microflora",
     type: "SELEN-VITY",
     ingredients: ["Selenium"],
-    purpose: "High bioavailability; positioned for stress management and thyroid support.",
+    purpose: "Support stress management and thyroid health.",
     accent: "teal",
     image: selenTransparent
   },
@@ -158,7 +143,7 @@ export const products: Product[] = [
     ingredients: ["B vitamins"],
     formulation: "B-COMPLEX VITY B vitamins",
     format: "Tablet",
-    purpose: "Positioned for nervous system and metabolism support.",
+    purpose: "Support nervous system and metabolism.",
     code: "B-CMPLX-60",
     accent: "coral",
     image: "/vity-lineup.png"
@@ -201,9 +186,9 @@ export const products: Product[] = [
 
 export const categories = [
   { slug: "d-vity", name: "D-VITY", subtitle: "Vitamin D3", description: "Four Vitamin D3 formulations." },
-  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes for men, women and children." },
-  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Vitamin C, probiotics, selenium and B-complex." },
-  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Focused mineral formulations." }
+  { slug: "multi-vity", name: "Multi-VITY", subtitle: "Multivitamin Complexes", description: "Multivitamin complexes." },
+  { slug: "immunity", name: "Immunity & Microflora", subtitle: "Targeted Formulations", description: "Targeted formulations." },
+  { slug: "minerals", name: "Essential Minerals", subtitle: "Iron & Zinc", description: "Mineral formulations." }
 ];
 
 export function getProduct(slug: string) { 
@@ -239,14 +224,45 @@ const russianCatalogText: Record<string, string> = {
   "Tablets": "Таблетки",
   "Chewable · Natural raspberry flavor": "Жевательные таблетки · натуральный вкус малины",
   "Orange flavor": "Апельсиновый вкус",
-  "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties": "Жевательные таблетки для детей от 3 лет · фруктовый вкус",
+  "Chewable tablets 3+ · Fruit flavor": "Жевательные таблетки 3+",
   "For children from 3 years": "Для детей от 3 лет",
-  "Specialized formula intended to support energy levels, muscle function and heart health.": 
-    "Специализированная формула для поддержки энергии, работы мышц и здоровья сердца.",
-  "Specialized formula intended to support hair, skin, nails and digestion.": 
-    "Специализированная формула для поддержки здоровья волос, кожи, ногтей и пищеварения.",
-  "Intended to support children's immunity, normal bone development and energy.": 
-    "Предназначен для поддержки иммунитета детей, нормального развития костей и энергии.",
-  "High bioavailability; positioned for stress management and thyroid support.": 
-    "Высокая биодоступность; позиционируется для поддержки при стрессе и функции щитовидной железы.",
-  "Positioned for nervous system and metabolism support.
+  "Support energy levels and muscle function.": "Поддержка энергии и мышц.",
+  "Support hair, skin, nails and digestion.": "Поддержка волос, кожи, ногтей.",
+  "Support children's immunity and development.": "Поддержка иммунитета детей.",
+  "Support stress management and thyroid health.": "Поддержка при стрессе.",
+  "Support nervous system and metabolism.": "Поддержка нервной системы.",
+  "Single mineral product": "Продукт с одним минералом",
+  "D-VITY 5000\n5000 IU / 125 mcg": "D-VITY 5000\n5000 МЕ / 125 мкг",
+  "D-VITY 2000\n2000 IU / 50 mcg": "D-VITY 2000\n2000 МЕ / 50 мкг",
+  "D-VITY 400 Kids\n400 IU / 10 mcg": "D-VITY 400 Kids\n400 МЕ / 10 мкг",
+  "Multi-VITY MEN Multivitamins 23 vital nutrients": "Multi-VITY MEN",
+  "Multi-VITY WOMEN Multivitamins 23 vital nutrients": "Multi-VITY WOMEN",
+  "Multi-VITY KIDS Multivitamins": "Multi-VITY KIDS",
+  "C-VITY 1000\n1000 mg": "C-VITY 1000\n1000 мг",
+  "PROBIOTIV VITY \n6 billion live bacteria": "PROBIOTIV VITY",
+  "B-COMPLEX VITY B vitamins": "B-COMPLEX VITY",
+  "Iron 40 mg": "Железо 40 мг",
+  "Iron 20 mg": "Железо 20 мг",
+  "Zinc VITY 15 mg": "Zinc VITY 15 мг"
+};
+
+export function catalogText(value: string, lang: Lang): string {
+  if (lang === "en") return value;
+  return russianCatalogText[value] ?? (value.startsWith("Vitamin ") ? value.replace("Vitamin ", "Витамин ") : value);
+}
+
+export function localizeProduct(product: Product, lang: Lang): Product {
+  if (!product) return product;
+  if (lang === "en") return product;
+  return {
+    ...product,
+    category: catalogText(product.category, lang),
+    type: catalogText(product.type, lang),
+    ingredients: Array.isArray(product.ingredients) 
+      ? product.ingredients.map(value => catalogText(value, lang))
+      : [],
+    ...(product.formulation ? { formulation: catalogText(product.formulation, lang) } : {}),
+    ...(product.format ? { format: catalogText(product.format, lang) } : {}),
+    ...(product.purpose ? { purpose: catalogText(product.purpose, lang) } : {}),
+  };
+}
