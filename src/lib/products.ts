@@ -1,8 +1,5 @@
 import cVity1000Transparent from "@/assets/vity-c-1000-transparent.png";
 import selenTransparent from "@/assets/vity-selen-100-transparent.png";
-import iron40Transparent from "@/assets/vity-iron-40-transparent.png";
-import iron20Transparent from "@/assets/vity-iron-20-transparent.png";
-import zinc15Transparent from "@/assets/vity-zinc-15-transparent.png";
 
 export type Lang = "en" | "ru";
 
@@ -160,7 +157,7 @@ export const products: Product[] = [
     ingredients: ["Iron", "Vitamin B9", "Vitamin C"],
     code: "IRN-40-FOL",
     accent: "coral",
-    image: iron40Transparent
+    image: "/vity-lineup.png"
   },
   {
     slug: "iron-20",
@@ -171,7 +168,7 @@ export const products: Product[] = [
     ingredients: ["Iron", "Vitamin B9", "Vitamin C"],
     code: "IRN-20-FOL",
     accent: "coral",
-    image: iron20Transparent
+    image: "/vity-lineup.png"
   },
   {
     slug: "zinc-15",
@@ -183,7 +180,7 @@ export const products: Product[] = [
     purpose: "Single mineral product",
     code: "ZN-15",
     accent: "teal",
-    image: zinc15Transparent
+    image: "/vity-lineup.png"
   }
 ];
 
@@ -229,43 +226,4 @@ const russianCatalogText: Record<string, string> = {
   "Orange flavor": "Апельсиновый вкус",
   "Chewable tablets 3+ · Fruit flavor, 4 vitamin varieties": "Жевательные таблетки для детей от 3 лет · фруктовый вкус, 4 разновидности витаминов",
   "For children from 3 years": "Для детей от 3 лет",
-  "Specialized formula intended to support energy levels, muscle function and heart health.": "Специализированная формула для поддержки энергии, работы мышц и здоровья сердца.",
-  "Specialized formula intended to support hair, skin, nails and digestion.": "Специализированная формула для поддержки здоровья волос, кожи, ногтей и пищеварения.",
-  "Intended to support children's immunity, normal bone development and energy.": "Предназначен для поддержки иммунитета детей, нормального развития костей и энергии.",
-  "High bioavailability; positioned for stress management and thyroid support.": "Высокая биодоступность; позиционируется для поддержки при стрессе и функции щитовидной железы.",
-  "Positioned for nervous system and metabolism support.": "Позиционируется для поддержки нервной системы и обмена веществ.",
-  "Single mineral product": "Продукт с одним минеральным компонентом",
-  "D-VITY 5000\n5000 IU / 125 mcg": "D-VITY 5000\n5000 МЕ / 125 мкг",
-  "D-VITY 2000\n2000 IU / 50 mcg": "D-VITY 2000\n2000 МЕ / 50 мкг",
-  "D-VITY 400 Kids\n400 IU / 10 mcg": "D-VITY 400 Kids\n400 МЕ / 10 мкг",
-  "Multi-VITY MEN Multivitamins 23 vital nutrients": "Multi-VITY MEN · 23 жизненно важных питательных вещества",
-  "Multi-VITY WOMEN Multivitamins 23 vital nutrients": "Multi-VITY WOMEN · 23 жизненно важных питательных вещества",
-  "Multi-VITY KIDS Multivitamins": "Multi-VITY KIDS · Мультивитамины",
-  "C-VITY 1000\n1000 mg": "C-VITY 1000\n1000 мг",
-  "PROBIOTIV VITY \n6 billion live bacteria": "PROBIOTIV VITY \n6 миллиардов живых бактерий",
-  "B-COMPLEX VITY B vitamins": "B-COMPLEX VITY · Витамины группы B",
-  "Iron 40 mg": "Железо 40 мг",
-  "Iron 20 mg": "Железо 20 мг",
-  "Zinc VITY 15 mg": "Zinc VITY 15 мг"
-};
-
-export function catalogText(value: string, lang: Lang): string {
-  if (lang === "en") return value;
-  return russianCatalogText[value] ?? (value.startsWith("Vitamin ") ? value.replace("Vitamin ", "Витамин ") : value);
-}
-
-export function localizeProduct(product: Product, lang: Lang): Product {
-  if (!product) return product;
-  if (lang === "en") return product;
-  return {
-    ...product,
-    category: catalogText(product.category, lang),
-    type: catalogText(product.type, lang),
-    ingredients: Array.isArray(product.ingredients) 
-      ? product.ingredients.map(value => catalogText(value, lang))
-      : [],
-    ...(product.formulation ? { formulation: catalogText(product.formulation, lang) } : {}),
-    ...(product.format ? { format: catalogText(product.format, lang) } : {}),
-    ...(product.purpose ? { purpose: catalogText(product.purpose, lang) } : {}),
-  };
-}
+  "Specialized formula intended to support energy levels, muscle function and heart health.": "Специализированная формула для поддержки энергии
