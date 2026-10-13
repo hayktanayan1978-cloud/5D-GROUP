@@ -17,6 +17,29 @@ export interface Product {
   };
 }
 
+export const categories = [
+  "Vitamins",
+  "Minerals",
+  "Multivitamins",
+  "Probiotics",
+  "Specialty Supplements"
+];
+
+export const catalogText = {
+  en: {
+    title: "Product Catalog",
+    subtitle: "Explore our professional portfolio of VITY supplements across the EAEU.",
+    searchPlaceholder: "Search products...",
+    allCategories: "All Categories",
+  },
+  ru: {
+    title: "Каталог продукции",
+    subtitle: "Ознакомьтесь с нашим профессиональным портфелем БАД VITY в ЕАЭС.",
+    searchPlaceholder: "Поиск продукции...",
+    allCategories: "Все категории",
+  }
+};
+
 export const products: Product[] = [
   {
     slug: "vity-d3-5000",
@@ -55,6 +78,10 @@ export const products: Product[] = [
     }
   }
 ];
+
+export function getProduct(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
+}
 
 export function localizeProduct(product: Product, lang: "en" | "ru") {
   return {
